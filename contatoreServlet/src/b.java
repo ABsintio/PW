@@ -20,9 +20,7 @@ public class b extends HttpServlet {
 
         Cookie[] cookies = request.getCookies();
         Cookie contatore = cookies[cookies.length - 1];
-        Integer number = Integer.parseInt(contatore.getValue()) + 1;
-        contatore.setValue(String.valueOf(number));
-        response.addCookie(contatore);
+        Integer number = Integer.parseInt(contatore.getValue());
 
         response.setContentType("text/html");
         PrintWriter html = response.getWriter();
