@@ -25,9 +25,7 @@ public class disamb extends HttpServlet {
             response.addCookie(cookie);
         }
 
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url_servlet);
-        dispatcher.include(request, response);
-        dispatcher.forward(request, response);
+        response.sendRedirect(url_servlet);
 
     }
 }
