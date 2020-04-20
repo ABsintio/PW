@@ -1,0 +1,9 @@
+{
+    "java.project.referencedLibraries": {
+        "include": [
+            "lib/**/*.jar",
+            "/home/riccbrand/Scrivania/UNIVERSITA/TerzoAnno/SecondoSemestre/PW/WEB-PAGES/loginServlet/**/*.jar",
+            "//**/*.jar"
+        ]
+    }
+}

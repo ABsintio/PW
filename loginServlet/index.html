@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+</head>
+<body>
+    <style>
+        h1 {
+            text-align: center;
+        }
+        div {
+            text-align: center;
+            margin-bottom: 15px;
+            left: 50%;
+            top: 50%;
+        }
+        div > input {
+            width: 300px;
+        }
+        .submit {
+            margin-bottom: 0px;
+        }
+        div > input#button {
+            width: 100px;
+        }
+    </style>
+    <h1>Effettua il Login!!!!</h1>
+    <form action="/loginServlet/LoginServlet" method="POST">
+        <div class="username">
+            <label><strong>Username: </strong></label>
+            <input type="text" name="username" placeholder="Immetti il tuo nome utente">
+        </div>
+        <div class="password">
+            <label><strong>Password: </strong></label>
+            <input type="password" name="password" placeholder="Immetti la tua password">
+        </div>
+        <div class="submit">
+            <input type="submit" value="Login" id="button">
+        </div>
+    </form>
+</body>
+</html>
