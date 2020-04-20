@@ -16,7 +16,7 @@ public class Parser {
             e.printStackTrace();
         }
 
-        return testHTML;
+        return "Ciao";
     }   
 
 }
