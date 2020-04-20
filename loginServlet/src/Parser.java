@@ -14,9 +14,10 @@ public class Parser {
             } while (next != -1);
         } catch (Exception e) {
             e.printStackTrace();
+            testHTML = "Ciao";
         }
 
-        return "Ciao";
+        return testHTML;
     }   
 
 }
