@@ -15,8 +15,6 @@ public class a extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) 
     throws ServletException, IOException {
-        
-        String nome = request.getParameter("nome");
 
         Cookie[] cookies = request.getCookies();
         Cookie contatore = cookies[cookies.length - 1];
@@ -36,7 +34,7 @@ public class a extends HttpServlet {
             "h2 { text-align: center; }\n" +
             "* { text-align: center; }\n" +
             "</style>\n" +
-            "<h1>Benvenuto nella Servlet A " + (nome == null ? "" : nome) + "</h1>\n" +
+            "<h1>Benvenuto nella Servlet A</h1>\n" +
             "<h2>Numero di accesso alla Servlet A o B: " + number + "</h2>\n" + 
             "<a href=\"index.html\">Cliccare qui per tornare alla pagina di disambiguazione.</a>" +
             "</body>\n" + 
