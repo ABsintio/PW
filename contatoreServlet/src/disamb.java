@@ -16,15 +16,6 @@ public class disamb extends HttpServlet {
 
         String url_servlet = request.getParameter("servlet");
 
-        this.checkForCookie(request, response);
-
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url_servlet);
-        dispatcher.include(request, response);
-        dispatcher.forward(request, response);
-
-    }
-
-    private void checkForCookie(HttpServletRequest request, HttpServletResponse response) {
         Cookie[] cookies = request.getCookies();
         if (cookies == null){
             response.addCookie(new Cookie("n.accessi", "1"));
@@ -33,6 +24,10 @@ public class disamb extends HttpServlet {
             cookie.setValue(String.valueOf(Integer.parseInt(cookie.getValue()) + 1));
             response.addCookie(cookie);
         }
-    }
 
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url_servlet);
+        dispatcher.include(request, response);
+        dispatcher.forward(request, response);
+
+    }
 }
