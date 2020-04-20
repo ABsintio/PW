@@ -2,7 +2,7 @@ import java.io.*;
 
 public class Parser {
 
-    public static String parse(String filename){
+    public static String parse(String filename) {
         String testHTML = "";
 
         try (FileReader stream = new FileReader(filename)) {
@@ -10,11 +10,11 @@ public class Parser {
 
             do {
                 next = stream.read();
-                if (next != -1) testHTML = testHTML.concat(String.valueOf((char) next));
+                if (next != -1)
+                    testHTML = testHTML.concat(String.valueOf((char) next));
             } while (next != -1);
         } catch (Exception e) {
             e.printStackTrace();
-            testHTML = "Ciao";
         }
 
         return testHTML;

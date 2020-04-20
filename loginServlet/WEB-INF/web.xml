@@ -11,8 +11,18 @@
         <servlet-class>login</servlet-class>
     </servlet>
 
+    <servlet>
+        <servlet-name>Redirect</servlet-name>
+        <servlet-class>gotoURL</servlet-class>
+    </servlet>
+
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>Redirect</servlet-name>
+        <url-pattern>/RedirectServlet</url-pattern>
     </servlet-mapping>
 </web-app>

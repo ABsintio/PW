@@ -2,6 +2,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 
 import java.io.*;
+import java.util.Enumeration;
 
 public class login extends HttpServlet {
 
@@ -18,7 +19,7 @@ public class login extends HttpServlet {
 
     @Override
     public void init(){
-        this.index = "../index.html";
+        this.index = "/home/riccbrand/Scrivania/UNIVERSITA/TerzoAnno/SecondoSemestre/PW/WEB-PAGES/loginServlet/index.html";
         this.username = "admin";
         this.password = "12345";
     }
@@ -35,7 +36,18 @@ public class login extends HttpServlet {
         if (user.equals(this.username) && pass.equals(this.password)) {
             HttpSession session = request.getSession(true);
             session.setAttribute("username", user);
-            session.setAttribute("lastpage", "");
+            
+            String lastUrl = null;
+
+            Enumeration<String> attributes = session.getAttributeNames();
+
+            while (attributes.hasMoreElements()) {
+                String name = (String) attributes.nextElement();
+                if (name.equals("lasturl")) {
+                    lastUrl = (String) session.getAttribute(name);
+                    break;
+                }
+            }
 
             html.println(
                 "<html>\n" +
@@ -46,15 +58,26 @@ public class login extends HttpServlet {
                 "<style>\n" +
                 "h1 { text-align: center; }\n" +
                 "div { text-align: center; left: 50%; top: 50%}\n" +
+                ".web { margin-bottom: 15px; }" +
+                "h2 { text-align: center; }" +
                 "</style>\n" +
-                "<h1>Login effettuato con successo</h1>\n" +
-                "<form action=\"\" method=\"GET\">\n" +
+                "<h1>Login effettuato con successo</h1>\n"
+            );
+
+            if (lastUrl != null){
+                html.println(
+                    "<h2>Ultima pagina visitata: " + lastUrl + " </h2>\n"
+                );
+            }
+
+            html.println(
+                "<form action=\"/loginServlet/RedirectServlet\" method=\"GET\">\n" +
                 "<div class=\"web\">\n" +
                 "<label>Seleziona la pagina che vuoi visitare<label>\n" +
-                "<select>\n" +
-                "<option value=\"https://google.com\">Google</option>\n" +
-                "<option value=\"https://zorinos.com/start/\">Zorin Start Page<option>\n" +
-                "<option value=\"/loginServlet/LoginPage\">Pagina di Login</option>\n" +
+                "<select name=\"url\">\n" +
+                "<option value=\"https://google.com\">Google</option>" +
+                "<option value=\"https://zorinos.com/start\">Zorin Start Page</option>" +
+                "<option value=\"index.html\">Pagina di Login</option>" +
                 "</select>\n" +
                 "</div>\n" +
                 "<div class=\"submit\">\n" +
@@ -64,7 +87,7 @@ public class login extends HttpServlet {
                 "</body>\n" +
                 "</html>"
             );
-
+        
         } else {
 
             // Parsa la pagina index.html e restituisce quella
