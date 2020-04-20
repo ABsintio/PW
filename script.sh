@@ -9,6 +9,7 @@ else
 fi
 
 commit=${@: -1:1}
+echo $commit
 
 # Aggiungiamo al repository git
 [ $commit -eq 0 ] && exit
