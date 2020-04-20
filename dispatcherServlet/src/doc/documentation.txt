@@ -1,0 +1,48 @@
+CONFIGURAZIONE DI UNA SERVLET
+
+Il container utilizza un oggetto corrispondente all'interfaccia ServletConfig per passare informazioni alla servlet nel momento della sua creazione. Si può ottenere tale oggetto per una specifica servlet con il metodo
+
+Servlet.getServletConfig()
+
+CONTESTO DI UNA SERVLET
+
+L'oggetto ServletContext è contenuto nell'oggetto ServletConfig creato e associato ad una servlet al momento della sua creazione. Viene definito attraverso l'interfaccia ServletContext. Esso definisce un insieme di metodi che una servlet usa per comunicare con il proprio container. Esiste un solo contesto per ciascuna web application. Nel container esistono uno o più contesti servlet e ogni servlet deve essere contenuta in un contesto.
+
+Questo contesto è un contenitore di oggetti condivisi e può essere usato per comunicazioni tra servlet di una stessa web application. Per esempio, per trasferire una richiesta da una servlet ad un'altra dello stesso contesto si può usare il metodo di ServletContext
+
+    getRequestDispatcher(java.lang.String path)
+        -> fornisce un oggetto RequestDispatcher associato al percorso path 
+    
+L'oggetto RequestDispatcher riceve richieste da un client e le inoltra a qualsiasi risorsa (servlet, pagine HTML o JSP) sul server. Tale interfaccia implementa un metodo che prende il nome di forward() che essenzialmente è colui che esegue l'operazione di inoltraggio della richiesta. 
+    - Se l'oggetto RequestDispatcher è stato ottenuto attraverso una chiamata del metodo getRequestDispatcher(url), il percorso di destinazione dell'oggetto ServletRequest è stato riconfigurato con l'url specificato.
+    - Il metodo forward deve essere chiamato prima di inviare la risposta. 
+    - Parametri:
+        - richiesta (oggetto ServletRequest)
+        - risposta (oggetto ServletResponse)
+    
+Questo metodo consente di effettuare una elaborazione preliminare della richiesta da parte di una risorsa e demandare l'elaborazione definitiva della risposta ad un'altra risorsa. 
+
+L'interfaccia RequestDispatcher dispone anche di un altro metodo chiamato la cui signature è
+
+    include(ServletRequest request, ServletResponse response)
+        -> include il contenuto di un risorsa (servlet o pagina HTML/JSP) nella risposta
+        -> L'oggetto ServletResponse è lo stesso utilizzato dalla risorsa chiamante e i percorsi non vengono riconfigurati perché il client riceve la risposta dalla servlet che ha eseguito il metodo include. 
+
+Il metodo forward(req, resp) 
+    - la locazione deve essere interna all'applicazione (no URL esterni)
+    - la redirezione non coinvolge il client
+    - Sia GET che POST (sendRedirect solo GET)
+        - Al contrario delle richiesta GET non possono essere inoltrate a normali pagine HTML
+        - Rinominare le pagine HTML statiche in .jsp 
+    - E' più effciente di sendRedirect() e va preferito ove possibile.
+
+COME FORNIRE DATI ALLA PAGINA/SERVLET DI DESTINAZIONE 
+
+Se la richiesta può essere inoltrata a più pagine di destinazione e richiede l'elaborazione di dati contenuti nell'oggetto HttpServletRequest allora conviene spostare l'elaborazione dei dati nella servlet da cui la richiesta ha origine e passare alla pagina/servlet di destinazione i dati già elaborati. 
+I dati preventivamente elaborati dalla servlet di origine possono essere inclusi come attributi dell'oggetto HttpServletRequest nel seguente modo 
+
+    request.setAttribute("key", value)
+
+e la pagina di destinazione può prelevare questi dati
+
+    Type value = (Type) request.getAttribute("key")
