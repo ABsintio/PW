@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contatore di accessi</title>
+</head>
+<body>
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        div {
+            text-align: center;
+            left: 50%;
+            right: 50%;
+        }.servlet {
+            margin-bottom: 15px;
+        }
+
+        div > label {
+            margin-right: 10px;
+        }
+    </style>
+    <h1>Benvenuto nella pagina di disambiguazione</h1>
+    <form action="/contatoreServlet/Disambiguazione" method="GET">
+        <div class="nome">
+            <label><strong>Nome: </strong></label>
+            <input type="text" name="nome" placeholder="Dimmi il tuo nome">
+        </div>
+        <div class="servlet">
+            <label>Scegli la servlet: </label>
+            <select name="servlet" id="selection">
+                <option value="/contatoreServlet/A">A</option>
+                <option value="/contatoreServlet/B">B</option>
+            </select>
+        </div>
+        <div class="submit">
+            <input type="submit" value="Accedi">
+        </div>
+    </form>
+</body>
+</html>

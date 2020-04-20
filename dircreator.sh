@@ -30,3 +30,5 @@ compiler=$(find . -regex '.*compile\.sh')
 cp -r $compiler "./${name_dir}/src/bash/"
 
 sudo bash script.sh $1 "Inserita directory $1"
+
+
