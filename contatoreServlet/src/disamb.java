@@ -25,7 +25,7 @@ public class disamb extends HttpServlet {
 
     private void checkForCookie(HttpServletRequest request, HttpServletResponse response) {
         Cookie[] cookies = request.getCookies();
-        if (cookies.length == 0){
+        if (cookies == null){
             response.addCookie(new Cookie("n.accessi", "1"));
         } else {
             Cookie cookie = cookies[cookies.length - 1];
