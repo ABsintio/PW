@@ -36,7 +36,7 @@ public class b extends HttpServlet {
             "<style>\n" + 
             "h1 { text-align: center; }\n" + 
             "h2 { text-align: center; }\n" +
-            "a { text-align: center; }\n" +
+            "* { text-align: center; }\n" +
             "</style>\n" +
             "<h1>Benvenuto nella Servlet B " + (nome == null ? "" : nome) + "</h1>\n" +
             "<h2>Numero di accesso alla Servlet A o B: " + number + "</h2>\n" + 

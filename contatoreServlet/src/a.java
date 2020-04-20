@@ -20,9 +20,7 @@ public class a extends HttpServlet {
 
         Cookie[] cookies = request.getCookies();
         Cookie contatore = cookies[cookies.length - 1];
-        Integer number = Integer.parseInt(contatore.getValue()) + 1;
-        contatore.setValue(String.valueOf(number));
-        response.addCookie(contatore);
+        Integer number = Integer.parseInt(contatore.getValue());
 
         response.setContentType("text/html");
         PrintWriter html = response.getWriter();
@@ -36,7 +34,7 @@ public class a extends HttpServlet {
             "<style>\n" + 
             "h1 { text-align: center; }\n" + 
             "h2 { text-align: center; }\n" +
-            "a { text-align: center; }\n" +
+            "* { text-align: center; }\n" +
             "</style>\n" +
             "<h1>Benvenuto nella Servlet A " + (nome == null ? "" : nome) + "</h1>\n" +
             "<h2>Numero di accesso alla Servlet A o B: " + number + "</h2>\n" + 
