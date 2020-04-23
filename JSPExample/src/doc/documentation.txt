@@ -1,0 +1,87 @@
+Le classi specifiche per la definizione di pagina JSP:
+
+    javax.servlet.jsp 
+    javax.servlet.jsp.tagext
+
+Il JSP container (al momento della prima invocazione della pagina):
+    1. Legge la pagina JSP
+    2. Scrive una servlet (corrispondente alla pagina letta)
+    3. La compila
+    4. La invoca secondo il ciclo di vita della servlet stessa
+
+Alle invocazioni successive il container fa riferimento alla servlet già caricata, quindi esegue solo il metodo di servizio. Come per le servlet, le JSP utilizzano un oggetto: request per la richiesta e response, hanno inoltre accesso a tutti i dati della richiesta, del contesto e dell'applcicazione web.
+
+COMPONENTI
+    - Direttive, istruzioni dirette al servlet/JSP container che specificano come gestire la JSP
+    - Azioni
+        - Scriplet (e varianti, come espressioni, dichiarazioni ecc.)
+        - Azioni standard
+        - Tag personalizzati
+
+Direttive
+Istruzioni dirette al JSP container. Consentono al programmatore di specificare impostazioni della pagina, contenuti esterni da includere o package da importare, librerie di tag personalizzati utilizzabili nella pagina. 
+
+Sintassi:
+
+    <%@ direttiva {attr="valore"}%>
+
+    Es.
+        <%@ page language="java" import="..."%> specifica il linguaggio di scripting 
+        <%@ include file="relativeURLspec"%> specifica il percorso relativo di un file da includere.
+
+    Direttive "page":
+        - import -> Fornisce elenco di package da importare. Utile per non dover scrivere tutto il 
+                    percorso dei package.
+
+        - session="true|false" -> se True allora la pagina ha la variabile implicita session. 
+                                  Di default è true.
+        
+        - isThreadSafe="true|false" -> Se true, il container può inviare alla pagina nuove richieste
+                                       prima che vengano completate le richieste in corso. Di default  
+                                       è true.
+
+        - errorPage="URL" -> Se su questa pagina si verifica un'eccezione non catturata, il container
+                             passerà alla pagina qui indicata.
+
+Azioni 
+Sono codifica in un linguaggio di programmazione.
+Specificate sotto forma di 
+
+    scriplet:
+        - codice puro <% sorgente scriplet %>
+        - Varianti 
+            - espressioni <%=espressione %>
+            - dichiarazioni <%! Dichiarazione %>
+            - commento <%-- commento --%>
+    
+    azione standard
+        
+        <jsp:actionName attributo="valore">body</jsp:faiqualcosa>
+    
+    tag personalizzati
+
+        <tagPrefix:tagName attributo="valore">body</tag>
+
+Scriplet
+Sono blocchi di codice eseguiti nel contesto della pagina. Consentono l'inserimento di codice Java all'interno della pagina JSP. Realizzano l'elaborazione della richiesta, interagiscono con gli elementi della pagina e altre componenti per creare pagine dinamiche. Delimitate da <% e %>, presentano blocchi di codice Java e sono inserite nel metodo _jspService al momento della traduzione. Scriplet e HTML possono essere intercalati per creare diverse risposte sulla base di informazioni incluse nella richiesta.
+
+Commenti
+Tre tipi
+    - JSP comment -> <%--  -->
+        - non si usa all'interno di uno scriplet
+        - non è visibile al client 
+    - HTML comment -> <!--  -->
+        - non si usa all'intero di uno scriplet
+        - visibile al client 
+    - language comment -> // o /**/
+        - si usa solo all'interno di uno scriplet
+        - visibile al client? No
+
+Espresioni 
+Delimitate da <%= e %> e contengono espressioni JAVA che vengono valutate quanto il client richiede la pagina che le contiene. Il container converte in risultato di un'espressione in un oggetto String e lo invia in output come parte della risposta.
+
+Azioni standard
+tag JSP dal comportamento predefinito, comportano l'esecuzione di codice, parametrizzato in base agli attributi del tag.
+
+Librerie di tag personalizzati
+Meccanismo di estensione dei tag JSP predefiniti. Consente la definizione di nuovi tag da parte del programmatore, nuovi tag possono incapsulare complesse funzionalità
