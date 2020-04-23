@@ -6,7 +6,7 @@
     <title>Esempio di utilizzo dell'oggetto Page</title>
 </head>
 <body>
-    <%@ page info="Esempio di uso page."%>
-    <h1>Page info: <%=page.getServletInfo() %></h1>
+    <%@page info="Esempio di uso page."%>
+    <h1>Page info: <%=this.getServletInfo() %></h1>
 </body>
 </html>

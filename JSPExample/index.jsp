@@ -29,5 +29,6 @@
     <a href="./src/esempioEspressione.jsp.jsp">Esempio di Espressione</a>
     <a href="./src/esempioDichiarazione.jsp.jsp">Esempio di Dichiarazione</a>
     <a href="./src/esempioOggettoPage.jsp">Esempio di uso oggetto Page</a>
+    <a href="./src/esempioErrorPage.jsp">Esempio di uso oggetto Exception</a>
 </body>
 </html>

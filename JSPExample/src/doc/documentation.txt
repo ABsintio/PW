@@ -42,6 +42,8 @@ Sintassi:
 
         - errorPage="URL" -> Se su questa pagina si verifica un'eccezione non catturata, il container
                              passer√† alla pagina qui indicata.
+        
+        - isErrorPage="true|false" -> Se true la pagina attuale √® di una pagina di errore. 
 
 Azioni 
 Sono codifica in un linguaggio di programmazione.
@@ -96,7 +98,15 @@ Le pagine JSP possono accedere ad oggetti definiti in diverse aree di visibilit√
                     
                         javax.servlet.ServletContext.getAttribute()
                     
-                    Oggetti impliciti: application (javax.servlet.ServletContext) rappresenta il container.
+                    Oggetti impliciti: 
+                    - application (javax.servlet.ServletContext) rappresenta il container.
+
+                        - Oggetto che fornisce informazioni sul contesto di esecuzione della JSP. 
+                        - Rappresenta la web application a cui la JSP appartiene.
+                        - Consente di interagire con l'ambiente di esecuzione
+                            - garantisce accesso a risorse server-side
+                            - permette l'accesso ai parametri di inizializzazione relativi all'app.
+                            - consente di gestire gli attributi di un'applicazione. 
     
     - Pagina: Oggetti che sono visibili solo al codice presente sulla stessa pagina. Per accedervi si usa
               il metodo 
@@ -106,6 +116,11 @@ Le pagine JSP possono accedere ad oggetti definiti in diverse aree di visibilit√
               Una volta completata la richiesta della pagina il container elimina il riferimento a tali oggetti. Oggetti impliciti:
               - config (javax.servlet.ServletConfig) opzioni di configurazione JSP 
               - exception (javax.lang.Throwable) errore passato alla pagina JSP di errore.
+
+                - Oggetto connesso alla gestione degli errori 
+                - Rappresenta l'eccezione che non viene gestita da nessun blocco catch 
+                - Non √® automaticamente disponibile in tutte le pagine ma solo nella errorPage.
+
               - out (javax.servlet.jsp.JspWriter) scrive testo nella risposta ad un richiesta.
               - page (java.lang.Object) rappresenta il "this" per la JSP corrente.
               
@@ -114,6 +129,19 @@ Le pagine JSP possono accedere ad oggetti definiti in diverse aree di visibilit√
                 - Pu√≤ essere utilizzato per accdere a tutti i metodi definiti nelle servlet 
 
               - pageContext (javax.servlet.jsp.PageContext)
+
+                - Oggetto che fornisce informazioni sul contesto di esecuzione della JSP. 
+                - Rappresenta l'insieme degli oggetti impliciti di una JSP. 
+                - Contente l'accesso a tutti gli occetti impliciti e ai loro attributi tramite 
+                    getPage()
+                    getRequest()
+                    getResponse()
+                    getSession()
+                    getServletContext()
+                    getException()
+                    etc ...
+                - Poco usato per lo scripting ma utile per costruire custom tags.
+
               - response (javax.servlet.ServletResponse)
 
     - Richiesta: visibilit√† uguale alla richiesta, vi si accede tramite il metodo 
