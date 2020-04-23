@@ -88,3 +88,45 @@ tag JSP dal comportamento predefinito, comportano l'esecuzione di codice, parame
 
 Librerie di tag personalizzati
 Meccanismo di estensione dei tag JSP predefiniti. Consente la definizione di nuovi tag da parte del programmatore, nuovi tag possono incapsulare complesse funzionalità
+
+AREE DI VISIBILITÀ
+Le pagine JSP possono accedere ad oggetti definiti in diverse aree di visibilità (scope):
+    - Applicazione: oggetti associati al contesto servlet della JSP e per recuperare tali oggetti si usa
+                    il metodo 
+                    
+                        javax.servlet.ServletContext.getAttribute()
+                    
+                    Oggetti impliciti: application (javax.servlet.ServletContext) rappresenta il container.
+    
+    - Pagina: Oggetti che sono visibili solo al codice presente sulla stessa pagina. Per accedervi si usa
+              il metodo 
+              
+                        javax.servlet.jsp.PageContext.getAttribute(). 
+                        
+              Una volta completata la richiesta della pagina il container elimina il riferimento a tali oggetti. Oggetti impliciti:
+              - config (javax.servlet.ServletConfig) opzioni di configurazione JSP 
+              - exception (javax.lang.Throwable) errore passato alla pagina JSP di errore.
+              - out (javax.servlet.jsp.JspWriter) scrive testo nella risposta ad un richiesta.
+              - page (java.lang.Object) rappresenta il "this" per la JSP corrente.
+              
+                - Rappresenta l'istanza corrente della servlet corrispondente alla JSP.
+                - Tipo interfaccio HTTPJspPage che discende da JSPpage che estende Servlet. 
+                - Può essere utilizzato per accdere a tutti i metodi definiti nelle servlet 
+
+              - pageContext (javax.servlet.jsp.PageContext)
+              - response (javax.servlet.ServletResponse)
+
+    - Richiesta: visibilità uguale alla richiesta, vi si accede tramite il metodo 
+
+                        javax.servlet.ServletRequest.getAttribute()
+                
+                 Viene eliminato il riferimento a tali oggetti nel momento in cui viene inviata la risposta. Oggetti impliciti
+                 - request (javax.servlet.ServletRequest) la richiesta.
+    
+    - Sessione: Oggetti associati ad una sessione utente. Vi si accede tramite il metodo 
+
+                        javax.servlet.http.HttpSession.getAttribute()
+                
+                Viene eliminato il riferimento a tali oggetti nel momento in cui viene la sessione termina (per volere dell'utente oppure timeout). Oggetti impliciti
+                - session (javax.servlet.http.HttpSession) sessione del client.
+

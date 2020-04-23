@@ -26,7 +26,8 @@
         }
     %>
 
-    <a href="./src/esempio1.jsp">Esempio 1</a>
-    <a href="./src/esempio2.jsp">Esempio 2</a>
+    <a href="./src/esempioEspressione.jsp.jsp">Esempio di Espressione</a>
+    <a href="./src/esempioDichiarazione.jsp.jsp">Esempio di Dichiarazione</a>
+    <a href="./src/esempioOggettoPage.jsp">Esempio di uso oggetto Page</a>
 </body>
 </html>
