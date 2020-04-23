@@ -7,10 +7,10 @@
 </head>
 <body>
     <!-- Devo mettere l'attributo a true altrimenti l'oggetto Exception non è presente -->
-    <%@ page isErrorPage="true" %>
+    <%@ page isErrorPage="true" import="java.io.*" %>
     <h1>Attenzione!</h1>
     <h2>E' stato rilevato il seguente errore: <br></h2>
     <strong><%=exception %></strong><br>
-    <% exception.printStackTrace(out); %>
+    <% exception.printStackTrace(new PrintWriter(out)); %>
 </body>
 </html>
