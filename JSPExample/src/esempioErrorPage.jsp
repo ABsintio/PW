@@ -11,6 +11,6 @@
     <h1>Attenzione!</h1>
     <h2>E' stato rilevato il seguente errore: <br></h2>
     <strong><%=exception %></strong><br>
-    <% exception.printStackTrace(out) %>
+    <% exception.printStackTrace(out); %>
 </body>
 </html>
