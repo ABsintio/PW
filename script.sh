@@ -16,6 +16,7 @@ echo $commit
 for i in $(ls ..); 
 do
 	if [ -d $i ]; then
+		echo $i
 		git add $i
 	fi
 done
