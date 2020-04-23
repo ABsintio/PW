@@ -15,8 +15,8 @@ echo $commit
 [ $commit -eq 0 ] && exit
 for i in $(ls ..); 
 do
+	echo $i
 	if [ -d $i ]; then
-		echo $i
 		git add $i
 	fi
 done
