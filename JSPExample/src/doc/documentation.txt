@@ -80,6 +80,9 @@ Tre tipi
 Espresioni 
 Delimitate da <%= e %> e contengono espressioni JAVA che vengono valutate quanto il client richiede la pagina che le contiene. Il container converte in risultato di un'espressione in un oggetto String e lo invia in output come parte della risposta.
 
+Dichiarazioni 
+Delimitate da <%! e %> e consentono la definizione di variabili e metodi attraverso la sintassi java. Le variabili diventano attributi della classe servlet che rappresenta la pagina JSP. I metodi così dichiarati corrisponderanno ai metodi della classe servlet che rappresenta la pagina JSP. La stessa variabile senza <%! diventa var locale di _jspService().
+
 Azioni standard
 tag JSP dal comportamento predefinito, comportano l'esecuzione di codice, parametrizzato in base agli attributi del tag.
 

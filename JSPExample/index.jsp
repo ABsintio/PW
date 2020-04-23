@@ -26,6 +26,7 @@
         }
     %>
 
-    <a href="./src/esempio.jsp">Esempio 1</a>
+    <a href="./src/esempio1.jsp">Esempio 1</a>
+    <a href="./src/esempio2.jsp">Esempio 2</a>
 </body>
 </html>
