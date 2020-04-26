@@ -13,7 +13,7 @@ public class a extends HttpServlet {
     public a(){}
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
 
         Cookie[] cookies = request.getCookies();
@@ -24,24 +24,22 @@ public class a extends HttpServlet {
         PrintWriter html = response.getWriter();
 
         html.println(
-            "<html>\n" + 
+            "<html>\n" +
             "<head>\n" +
             "<title>Pagina Servlet A</title>\n" +
-            "</head>\n" + 
+            "</head>\n" +
             "<body>\n" +
-            "<style>\n" + 
-            "h1 { text-align: center; }\n" + 
+            "<style>\n" +
+            "h1 { text-align: center; }\n" +
             "h2 { text-align: center; }\n" +
             "* { text-align: center; }\n" +
             "</style>\n" +
             "<h1>Benvenuto nella Servlet A</h1>\n" +
-            "<h2>Numero di accesso alla Servlet A o B: " + number + "</h2>\n" + 
+            "<h2>Numero di accesso alla Servlet A o B: " + number + "</h2>\n" +
             "<a href=\"index.html\">Cliccare qui per tornare alla pagina di disambiguazione.</a>" +
-            "</body>\n" + 
+            "</body>\n" +
             "</html>"
         );
-
-        
 
     }
 
