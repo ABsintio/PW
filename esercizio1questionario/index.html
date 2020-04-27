@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Esercizio 1 Questionario</title>
+  </head>
+  <body>
+    <style media="screen">
+      h1 {
+        text-align: center;
+      }
+      div {
+        text-align: center;
+      }
+      .name {
+        margin-bottom: 15px;
+      }
+      div>label {
+        margin-right: 9px;
+      }
+      input[type="checkbox"]{
+        position: relative;
+        top: 4px;
+      }
+      label#toggle{
+        margin-right: 0;
+        position: relative;
+        top: 2px;
+      }
+    </style>
+    <script type="text/javascript">
+      function toggleVisibility() {
+        var pass = document.getElementById('passwd');
+        if (pass.type == "password") {
+          pass.type = "text";
+        } else {
+          pass.type = "password";
+        }
+      }
+    </script>
+    <h1>Forum di registrazione della password</h1>
+    <form action="" method="post">
+      <div class="name">
+        <label for=""> <strong>Password: </strong> </label>
+        <input type="password" name="password" placeholder="Inserire una password" id="passwd">
+        <input type="checkbox" name="" value="Show password" onclick="toggleVisibility()">
+        <label for="show" id="toggle">Show password</label>
+      </div>
+      <div class="submit">
+        <input type="submit" value="Register">
+      </div>
+    </form>
+  </body>
+</html>
