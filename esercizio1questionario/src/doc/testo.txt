@@ -1,2 +1,1 @@
-Una servlet ServletA risponde a richieste di tipo POST e aggiunge un nuovo attributo "nuovoattributo" alla richiesta
-per poi redirigerla (internamente) alla ServletB preposta all'invio della rispota.  
+Una servlet ServletA risponde a richieste di tipo POST e aggiunge un nuovo attributo "nuovoattributo" alla richiesta per poi redirigerla (internamente) alla ServletB preposta all'invio della rispota.  
