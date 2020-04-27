@@ -26,8 +26,7 @@ public class redirectServlet extends HttpServlet {
         resp.setContentType("text/html");
         
         req.setAttribute("nuovoattributo", String.valueOf(this.access));
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/ResponseServlet");
-        dispatcher.forward(req, resp);
+        req.getRequestDispatcher("/ResponseServlet").forward(req, resp);
     }
 
 }
