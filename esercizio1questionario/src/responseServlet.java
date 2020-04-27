@@ -13,11 +13,11 @@ public class responseServlet extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) 
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) 
     throws ServletException, IOException {
         
         String password = req.getParameter("password");
-        String naccessi = req.getParameter("nuovoattributo");
+        String naccessi = (String) req.getAttribute("nuovoattributo");
 
         resp.setContentType("text/html");
         PrintWriter out = resp.getWriter();
