@@ -24,7 +24,7 @@ public class redirectServlet extends HttpServlet {
         session.setAttribute(cookiename, req.getParameter("password"));
         req.setAttribute("nuovoattributo", session.getId());
         RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher(
-            "/esercizio1questionario/ResponseServlet"
+            "/ResponseServlet"
         );
         dispatcher.forward(req, resp);
 
