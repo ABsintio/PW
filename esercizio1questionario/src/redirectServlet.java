@@ -22,12 +22,13 @@ public class redirectServlet extends HttpServlet {
 
         String cookiename = "password" + String.valueOf(this.access);
         resp.addCookie(new Cookie(cookiename, password));
+
+        resp.setContentType("text/html");
         
         req.setAttribute("nuovoattributo", String.valueOf(this.access));
         RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher(
             "/ResponseServlet"
         );
-        dispatcher.include(req, resp);
         dispatcher.forward(req, resp);
 
     }
