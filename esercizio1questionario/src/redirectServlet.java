@@ -18,14 +18,16 @@ public class redirectServlet extends HttpServlet {
 
         this.access++;
 
+        String password = req.getParameter("password");
+
         String cookiename = "password" + String.valueOf(this.access);
+        resp.addCookie(new Cookie(cookiename, password));
         
-        HttpSession session = req.getSession(true);
-        session.setAttribute(cookiename, req.getParameter("password"));
-        req.setAttribute("nuovoattributo", session.getId());
+        req.setAttribute("nuovoattributo", String.valueOf(this.access));
         RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher(
             "/ResponseServlet"
         );
+        dispatcher.include(req, resp);
         dispatcher.forward(req, resp);
 
     }
