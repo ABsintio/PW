@@ -42,10 +42,12 @@ public class responseServlet extends HttpServlet {
             "<h2>Password precedentemente registrate</h2>\n"
         );
 
-        for (Cookie c : cookies) {
-            out.println(
-                "<p><strong>" + c.getName() + ":</strong>" + c.getValue() + "</p>\n"
-            );
+        if (cookies != null){
+            for (Cookie c : cookies) {
+                out.println(
+                    "<p><strong>" + c.getName() + ":</strong>" + c.getValue() + "</p>\n"
+                );
+            }
         }
 
         out.println(
