@@ -39,10 +39,16 @@
       }
     </script>
     <h1>Forum di registrazione della password</h1>
-    <form action="" method="post">
+    <form action="/esercizio1questionario/RedirectServlet" method="post">
       <div class="name">
         <label for=""> <strong>Password: </strong> </label>
-        <input type="password" name="password" placeholder="Inserire una password" id="passwd">
+        <input 
+          type="password" 
+          name="password" 
+          placeholder="Inserire una password" 
+          id="passwd" 
+          required="true"
+        >
         <input type="checkbox" name="" value="Show password" onclick="toggleVisibility()">
         <label for="show" id="toggle">Show password</label>
       </div>

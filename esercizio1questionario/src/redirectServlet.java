@@ -5,6 +5,8 @@ import javax.servlet.http.*;
 
 public class redirectServlet extends HttpServlet {
 
+    private int access = 0;
+
     /**
      *
      */
@@ -14,10 +16,15 @@ public class redirectServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) 
     throws ServletException, IOException {
 
+        this.access++;
+
+        String cookiename = "password" + String.valueOf(this.access);
+        
         HttpSession session = req.getSession(true);
-        req.setAttribute("name", session.getId());
+        session.setAttribute(cookiename, req.getParameter("password"));
+        req.setAttribute("nuovoattributo", session.getId());
         RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher(
-            "/esercizio1questionario/servletRisposta"
+            "/esercizio1questionario/ResponseServlet"
         );
         dispatcher.forward(req, resp);
 
