@@ -63,9 +63,12 @@ public class dispatcherLogin extends HttpServlet {
                         session.setAttribute("naccessi", String.valueOf(
                             ++this.naccessi
                         ));
-                        // TODO: Redirigi richiesta a pannelloAmministratore
+                        getServletContext().getRequestDispatcher("/PannelloAdmin")
+                            .forward(request, response);
+
                     } else {
-                        // TODO: Redirigi richiesta a homeServlet
+                        getServletContext().getRequestDispatcher("/HomePage")
+                            .forward(request, response);
                     }
                 } else {
                     error = "password";

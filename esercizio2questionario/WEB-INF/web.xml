@@ -16,6 +16,14 @@
         <servlet-name>ErrorServlet</servlet-name>
         <servlet-class>errorServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PannelloAdmin</servlet-name>
+        <servlet-class>pannelloAmministratore</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>HomeServlet</servlet-name>
+        <servlet-class>homeServlet</servlet-class>
+    </servlet>
 
     <servlet-mapping>
         <servlet-name>DispatcherServlet</servlet-name>
@@ -24,5 +32,13 @@
     <servlet-mapping>
         <servlet-name>ErrorServlet</servlet-name>
         <url-pattern>/ErrorServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PannelloAdmin</servlet-name>
+        <url-pattern>/PannelloAdmin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HomeServlet</servlet-name>
+        <url-pattern>/HomePage</url-pattern>
     </servlet-mapping>
 </web-app>
