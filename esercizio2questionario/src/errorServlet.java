@@ -26,7 +26,7 @@ public class errorServlet extends HttpServlet {
             "<title>Error Page</title>\n" +
             "</head>\n" + 
             "<body>\n" +
-            "<link rel=\"stylesheet\" href=\"/src/css/error.css\">\n" + 
+            "<link rel=\"stylesheet\" href=\"./src/css/error.css\">\n" + 
             "<h1>Credenziali Errate</h1>\n"
         );
 

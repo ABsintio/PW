@@ -12,12 +12,17 @@ public class dispatcherLogin extends HttpServlet {
      *
      */
     private static final long serialVersionUID = 1L;
-    private final String userfile = "./webapps/esercizio2questionario/src/json/user.json";
+    private String userfile;
     private int naccessi; // Gli accessi dell'amministratore
 
     public dispatcherLogin(){}
 
     public void init() {
+        String pwd = System.getProperty("user.dir");
+        this.userfile = pwd.concat(
+            "home/riccbrand/Scrivania/UNIVERSITA/TerzoAnno/SecondoSemestre/" +
+            "PW/WEB-PAGES/esercizio2questionario/src/json/user.json"
+        );
         this.naccessi = 0;
     }
 
@@ -79,6 +84,5 @@ public class dispatcherLogin extends HttpServlet {
             getServletContext().getRequestDispatcher("/ErrorServlet")
                 .forward(request, response);
         }
-
     }
 }

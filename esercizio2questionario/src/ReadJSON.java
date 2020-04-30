@@ -27,5 +27,4 @@ public class ReadJSON {
 
         return object;
     }
-
 }
