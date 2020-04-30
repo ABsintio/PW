@@ -2,3 +2,9 @@
  "-//Sun Microsystems, Inc.//DTD Web Application 2.2//EN"
  "http://java.sun.com/j2ee/dtds/web-app_2_2.dtd">
 
+<web-app>
+    <display-name>Servlet di Accesso</display-name>
+    <description>
+        Web page per il secondo esercizio del questionario.
+    </description>
+</web-app>
