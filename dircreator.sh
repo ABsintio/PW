@@ -45,6 +45,7 @@ EOF
 
 # Sposto anche le librerie
 sudo cp /opt/tomcat/latest/lib/servlet-api.jar ./src/lib/
+sudo chown riccbrand servlet-api.jar
 
 cd ..
 

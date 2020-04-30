@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esercizio 2 Questionario</title>
+</head>
+<body>
+    <h1>Pagina di autenticazione</h1>
+    <h3>Si prega di riempire i seguenti campi</h3>
+    <form action="" method="POST">
+        <fieldset>
+            <legend>Credenziali</legend>
+            <div class="userid">
+                <label for="username"><strong>Username: </strong></label>
+                <input type="text"
+                       placeholder="Inserire il proprio username"
+                       required="true"
+                       name="userid"
+                       id="userid"
+                >
+            </div>
+            <div class="role">
+                <label for="ruoloutente"><strong>Role: </strong></label>
+                <select name="ruolo" id="role">
+                    <option value="Amministratore">Utente amministratore</option>
+                    <option value="Generico">Utente generico</option>
+                </select>
+            </div>
+            <div class="password">
+                <label for="parolachiave"><strong>Password: </strong></label>
+                <input type="password"
+                       name="password" 
+                       id="password"
+                       placeholder="Inserire la parola segreta"
+                       required="true"
+                >
+                <input type="checkbox" id="togglevisibility" value="showpassword">
+                <label for="togglevisibility">Show password</label>
+            </div>
+            <div class="submit">
+                <input type="submit" value="Login">
+            </div>
+        </fieldset>
+    </form>
+</body>
+</html>
