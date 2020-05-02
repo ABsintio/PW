@@ -67,6 +67,8 @@ public class pannelloAmministratore extends HttpServlet {
                 // Includo l'"header" pannello amministratore alla risposta
                 this.getServletContext().getRequestDispatcher("/HomeServlet")
                     .include(request, response);
+            } else {
+                response.sendRedirect("index.html");
             }
         } else if (username.equals("generic")) {
             if (password.equals("generic")) {
@@ -84,6 +86,8 @@ public class pannelloAmministratore extends HttpServlet {
                     .forward(request, response);
 
             }
+        } else {
+            response.sendRedirect("index.html");
         }
         
     }
