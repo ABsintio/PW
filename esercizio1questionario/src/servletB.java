@@ -2,14 +2,14 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import java.io.*;
 
-public class responseServlet extends HttpServlet {
+public class servletB extends HttpServlet {
 
     /**
      *
      */
     private static final long serialVersionUID = 1L;
 
-    public responseServlet() {
+    public servletB() {
     }
 
     @Override

@@ -3,7 +3,7 @@ import java.io.IOException;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
-public class redirectServlet extends HttpServlet {
+public class servletA extends HttpServlet {
 
     private int access = 0;
 
@@ -27,7 +27,7 @@ public class redirectServlet extends HttpServlet {
         
         req.setAttribute("nuovoattributo", String.valueOf(this.access));
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(
-            "/ResponseServlet"
+            "/ServletB"
         );
         dispatcher.forward(req, resp);
     }
