@@ -1,6 +1,7 @@
 import javax.servlet.*;
 import javax.servlet.http.*;
 import java.io.*;
+import java.util.Date;
 
 /**
  * pannelloAmministratore
@@ -31,15 +32,34 @@ public class pannelloAmministratore extends HttpServlet {
                 // con i permessi di amministratore
                 HttpSession session = request.getSession(true);
 
+                String date = (new Date()).toString();
+
                 // Aggiungo un attributo di sessione solo nel caso
                 // in cui l'utente sia "utente amministratore"
-                session.setAttribute("naccessi", ++this.naccessi);
+                session.setAttribute("lastAccess", date);
 
                 response.setContentType("text/html");
                 PrintWriter out = response.getWriter();
 
                 out.println(
-                    "<h2>Pannello Amministratore</h2>\n"
+                    "<h1>Pannello Amministratore</h1>\n" +
+                    "<div>\n" +
+                    "<span>\n" +
+                    "<label>Numero accessi: </label>" +
+                    "<label id=\"naccessi\">" + (++this.naccessi) + "</label>\n" +
+                    "</span>\n" + 
+                    "<span>\n" +
+                    "<label id=\"date\">" + date + "</label>\n" + 
+                    "</span>\n" +
+                    "<span>\n" +
+                    "<label>Choose a Link</label><select onchange=\"location = this.value\">\n" +
+                    "<option value=\"https://www.google.com\">Google</option>\n" +
+                    "<option value=\"https://www.youtube.com\">Youtube</option>\n" +
+                    "</select>\n" + 
+                    "</span>\n" +
+                    "<span>\n" +
+                    "<a href=\"index.html\">Quit</a>\n" +
+                    "</span>\n"
                 );
                 
                 // Ottengo il dispatcher per la redirezione interna e 

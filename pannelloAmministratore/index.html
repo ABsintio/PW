@@ -6,10 +6,20 @@
     <title>Esercizio 2 Questionario</title>
 </head>
 <body>
+    <script>
+        function toggleVisibility(){
+            var check = document.getElementById("password");
+            if (check.type == "password") {
+                check.type = "text";
+            } else {
+                check.type = "password";
+            }
+        }
+    </script>
     <link rel="stylesheet" href="./src/css/index.css">
     <h1>Pagina di autenticazione</h1>
     <h3>Si prega di riempire i seguenti campi</h3>
-    <form action="/esercizio2questionario/PannelloAmministratore" method="POST">
+    <form action="/pannelloAmministratore/PannelloAmministratore" method="POST">
         <fieldset>
             <legend>Credenziali</legend>
             <div class="userid">
@@ -22,16 +32,20 @@
                 >
             </div>
             <div class="password">
-                <label for="parolachiave" id="password"><strong>Password: </strong></label>
+                <label for="parolachiave" id="passwordlabel"><strong>Password: </strong></label>
                 <span class="passwordtoggle">
                     <input type="password"
-                       name="password" 
-                       id="password"
-                       placeholder="Inserire la parola segreta"
-                       required="true"
+                        name="password" 
+                        id="password"
+                        placeholder="Inserire la parola segreta"
+                        required="true"
                     >
                     <br>
-                    <input type="checkbox" id="togglevisibility" value="showpassword">
+                    <input type="checkbox" 
+                        id="togglevisibility" 
+                        value="showpassword"
+                        onclick="toggleVisibility()"
+                    >
                     <label for="togglevisibility" id="toggle">Show password</label>
                 </span>
             </div>
