@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esercizio 2 Questionario</title>
+</head>
+<body>
+    <link rel="stylesheet" href="./src/css/index.css">
+    <h1>Pagina di autenticazione</h1>
+    <h3>Si prega di riempire i seguenti campi</h3>
+    <form action="/esercizio2questionario/PannelloAmministratore" method="POST">
+        <fieldset>
+            <legend>Credenziali</legend>
+            <div class="userid">
+                <label for="username" id="user"><strong>Username: </strong></label>
+                <input type="text"
+                       placeholder="Inserire il proprio username"
+                       required="true"
+                       name="userid"
+                       id="userid"
+                >
+            </div>
+            <div class="password">
+                <label for="parolachiave" id="password"><strong>Password: </strong></label>
+                <span class="passwordtoggle">
+                    <input type="password"
+                       name="password" 
+                       id="password"
+                       placeholder="Inserire la parola segreta"
+                       required="true"
+                    >
+                    <br>
+                    <input type="checkbox" id="togglevisibility" value="showpassword">
+                    <label for="togglevisibility" id="toggle">Show password</label>
+                </span>
+            </div>
+            <div class="submit">
+                <input type="submit" value="Login">
+            </div>
+        </fieldset>
+    </form>
+</body>
+</html>

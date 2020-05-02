@@ -2,3 +2,27 @@
  "-//Sun Microsystems, Inc.//DTD Web Application 2.2//EN"
  "http://java.sun.com/j2ee/dtds/web-app_2_2.dtd">
 
+<web-app>
+    <display-name>Web page pannello Amministratore</display-name>
+    <description>
+        Esercizio 2 Questionario per pannello Amministratore
+    </description>
+
+    <servlet>
+        <servlet-name>PannelloAmministratore</servlet-name>
+        <servlet-class>pannelloAmministratore</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>HomeServlet</servlet-name>
+        <servlet-class>homeServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>PannelloAmministratore</servlet-name>
+        <url-pattern>/PannelloAmministratore</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HomeServlet</servlet-name>
+        <url-pattern>/HomeServlet</url-pattern>
+    </servlet-mapping>
+</web-app>

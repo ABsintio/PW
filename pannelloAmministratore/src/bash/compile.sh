@@ -1,5 +1,5 @@
 #!/bin/bash
-jav=`find . -regex '.*\.java'`
+jav=`find . -regex '.*\.java' | tail -n 1`
 if [ ! -z $jav ]; then
     javac -cp ".:./src/lib/*" -d ./WEB-INF/classes ./src/*.java
     jar cfv ./WEB-INF/lib/servlet.jar ./WEB-INF/classes/*.class

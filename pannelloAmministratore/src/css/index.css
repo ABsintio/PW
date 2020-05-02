@@ -1,0 +1,55 @@
+h1 {
+    text-align: center;
+}
+
+h3 {
+    text-align: center;
+}
+
+fieldset {
+    border-radius: 5px;
+    width: 400px;
+    position: relative;
+    left: 535px;
+    padding: 20px;
+}
+
+fieldset > div {
+    padding-bottom: 17px;
+}
+.submit {
+    text-align: center;
+    transform: translateY(20px);
+}
+
+.passwordtoggle {
+    float: right;
+    position: absolute;
+}
+
+label {
+    margin-right: 20px;
+}
+
+label#user {
+    margin-right: 12px;
+}
+
+legend {
+    background-color: aliceblue;
+    border: 1px solid #dcdcdc;
+    border-radius: 10px;
+    padding: 10px;
+    text-transform: uppercase;
+}
+
+input[type="checkbox"]{
+    position: relative;
+    top: 4px;
+}
+
+label#toggle{
+    margin-right: 0;
+    position: relative;
+    top: 2px;
+}
