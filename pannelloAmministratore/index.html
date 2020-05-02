@@ -27,7 +27,7 @@
                 <input type="text"
                        placeholder="Inserire il proprio username"
                        required="true"
-                       name="userid"
+                       name="UserID"
                        id="userid"
                 >
             </div>
@@ -48,6 +48,13 @@
                     >
                     <label for="togglevisibility" id="toggle">Show password</label>
                 </span>
+            </div>
+            <div class="role">
+                <label for="ruolo"><strong>Seleziona Ruolo:</strong></label>
+                <select name="ruolo" id="ruoloselect">
+                    <option value="amministratore">Utente Amministratore</option>
+                    <option value="generico">Utente Generico</option>
+                </select>
             </div>
             <div class="submit">
                 <input type="submit" value="Login">

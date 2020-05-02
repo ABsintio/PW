@@ -21,6 +21,10 @@ fieldset > div {
     text-align: center;
     transform: translateY(20px);
 }
+.role {
+    position: relative;
+    top: 20px;
+}
 
 .passwordtoggle {
     float: right;

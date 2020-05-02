@@ -15,7 +15,7 @@ public class homeServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) 
     throws ServletException, IOException {
         
-        String nome = request.getParameter("userid");
+        String nome = request.getParameter("UserID");
 
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
@@ -32,6 +32,7 @@ public class homeServlet extends HttpServlet {
             "label#naccessi {margin-right: 0px;}\n"+
             "label#date {margin-right: 0px;}\n"+
             "h1 {margin-bottom: 30px;}\n" +
+            "h1#welcom {padding-top: 30px;}\n" +
             "div {\n" +
             "display: inline;\n" +
             "position: relative; top: 50%;\n" +
@@ -45,13 +46,42 @@ public class homeServlet extends HttpServlet {
             "border-right: 1px solid #800080;\n" +
             "border-left: 1px solid #800080;\n" +
             "}\n" +
-            "</style>\n" +
-            "<h1>Welcome " + nome + "</h1>\n" +
+            "</style>\n"
+        );
+
+        HttpSession session = request.getSession(false);
+
+        if (session.isNew()){    
+            out.println("<h1 id=\"welcome\">Welcome " + nome + "</h1>\n");
+        } else {
+            out.println("<h1 id=\"welcome\">Welcome back " + nome + "</h1>\n");
+        }
+
+        out.println(
+            "<a href=\"/pannelloAmministratore/HomeServlet\">Quit</a>\n"+
             "</body>\n" +
             "</html>"
         );
 
         out.close();
+
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+    throws IOException, ServletException {
+
+        // Questo mi servlet dal momento che dalla servlet PannelloAmministratore
+        // è possibile tornare alla pagina di login generando una richiesta GET
+        // con la back-arrow. Quindi dal momento che tornando indietro con quella 
+        // non è voglio invalidare la sessione, inserisco un attributo alla richiesta
+        // che permetterà al metodo doGET della servlet PannelloAmministratore, quale
+        // tra le due richieste è.
+        request.setAttribute("exit", "1");
+        RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher(
+            "/PannelloAmministratore"
+        );
+        dispatcher.forward(request, response);
 
     }
 
