@@ -85,6 +85,8 @@ public class pannelloAmministratore extends HttpServlet {
                 this.getServletContext().getRequestDispatcher("/HomeServlet")
                     .forward(request, response);
 
+            } else {
+                response.sendRedirect("index.html");
             }
         } else {
             response.sendRedirect("index.html");
