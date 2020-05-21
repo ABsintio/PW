@@ -8,13 +8,6 @@
         body {
             font-family: tahoma, Arial, Helvetica, sans-serif;
         }
-
-        table, tr, td {
-            font-size: 9em;
-            border: 3px groove;
-            padding: 5px;
-            background-color: #dddddd;
-        }
     </style>
 </head>
 <body>

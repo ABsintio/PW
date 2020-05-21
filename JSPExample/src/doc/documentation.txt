@@ -97,6 +97,12 @@ tag JSP dal comportamento predefinito, comportano l'esecuzione di codice, parame
         - Attributi:
             - page -> specifica l'url path relativo della risorsa da includere (stessa WEBapp).
             - flush -> specifica se il buffer dovrebbe essere "pulito" prima dell'inclusione (default = true)
+
+    - <jsp:forward>
+        - consente ad una pagine di inoltrare la richiesta ad altre risorse
+    
+    - <jsp:param> (annidata nel forward)
+        - specifica coppie (nome, valore) di dati da allegare ad altre azioni.
     
 
 Librerie di tag personalizzati

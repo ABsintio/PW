@@ -52,6 +52,7 @@ cd ..
 # Trovo il file per compilare 
 compiler=$(find . -regex '.*compile\.sh')
 cp -r $compiler "./${name_dir}/src/bash/"
+chmod u+x "./${name_dir}/src/bash/compiler.sh"
 
 sudo bash script.sh $1 "Inserita directory $1" 1
 
