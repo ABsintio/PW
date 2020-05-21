@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ottenere il colore di JellyBean</title>
     <%@page language="java"%>
-    <jsp:useBean id="jb" scope="session" class="beans.JellyBean">
+    <jsp:useBean id="jb" scope="session" class="src.beans.JellyBean">
 </head>
 <body>
     <jsp:setProperty name="jb" property="color" param="newColor">

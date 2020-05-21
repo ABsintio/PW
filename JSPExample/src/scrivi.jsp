@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Impostazione del colore di JellyBean</title>
     <%@page language="java"%>
-    <jsp:useBean id="jb" scope="session" class="beans.JellyBean">
+    <jsp:useBean id="jb" scope="session" class="src.beans.JellyBean">
 </head>
 <body>
     <form action="leggi.jsp" method="get">

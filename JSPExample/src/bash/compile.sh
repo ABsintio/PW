@@ -1,12 +1,16 @@
 #!/bin/bash
 jav=`find . -regex '.*\.java'`
-for i in ${jav}; do
-    echo $i
-done
 
-if [ ! -z $jav ]; then
-    javac -cp ".:./src/lib/*" -d ./WEB-INF/classes ./src/**.java
-    jar cfv ./WEB-INF/lib/servlet.jar ./WEB-INF/classes/.*.class
+if [ ! -z `echo $jav | tail -n 1` ]; then
+    for file in ${jav}; do 
+        javac -cp ".:./src/lib/*" -d ./WEB-INF/classes $file
+    done
+
+    class=`find . -regex '.*\.class'`
+    
+    for fileclass in ${class}; do
+        jar cfv ./WEB-INF/lib/servlet.jar $fileclass
+    done
 fi
 
 dir=`echo $(pwd) | awk '{split($0, array, "/"); print array[length(array)]}'`
