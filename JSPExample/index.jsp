@@ -32,5 +32,6 @@
     <a href="./src/esempioErrorPage.jsp">Esempio di uso oggetto Exception</a><br>
     <a href="./src/include.jsp">Esempio di utilizzo dell'azione standard jsp:include</a><br>
     <a href="./src/forward1.jsp">Esempio di utilizzo dell'azione standard jsp:forward</a><br>
+    <a href="./src/scrivi.jsp">Esempio di utilizzo dei JavaBeans</a>
 </body>
 </html>

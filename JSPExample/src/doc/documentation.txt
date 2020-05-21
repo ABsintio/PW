@@ -104,6 +104,50 @@ tag JSP dal comportamento predefinito, comportano l'esecuzione di codice, parame
     - <jsp:param> (annidata nel forward)
         - specifica coppie (nome, valore) di dati da allegare ad altre azioni.
     
+    - <jsp:useBean>
+        - il codice contenuto negli scriplet Java può essere inserito in una classe apposita invocata la momento
+          del bisogno.
+        - JAVA BEANS
+            - Ai fini dello sviluppo di servlet e JSP contano i seguenti aspetti della specifica:
+                1. i JavaBean non devono avere alcun attributo pubblico
+                2. per ogni attributo avere metodo get e set pubblici
+                3. avere metodo costruttore ma senza argomenti
+            - Affinché sia visibile alla web application il bean deve essere incluso nella dir WEB-INF/classes
+              con tutto il percorso del suo package.
+            - una volta creato per poterlo utilizzare in una JSP vegono definit 3 tag 
+                1. per individuare o creare un JavaBean nell'area di visibilità specificata
+                2. per definire una proprietà di un JavaBean (set)
+                3. per leggere una proprietà di un JavaBean (get)
+        - Sintassi
+
+            <jsp:useBean id="nome" scope="page|request|session|application" class="nomeClasse">
+        
+            . id -> Il nome usato per manipolare oggetti Java con azioni <jsp:setProperty> and <jsp:getProperty>
+            . scope -> lo scope in cui l'oggetto java è accessibile (default = page)
+            . class -> il nome della classe (tutto il path) ossia <package>.<nomeClasse>
+            . type -> Il tipo di JavaBean utilizzato. 
+        
+        - Creato il bean è possibile definirne le proprietà con il tag jsp:setProperty
+            - notare che il parametro "name" è il nome dell'istanza, ovvero l'id specificato in <jsp:useBean>
+            - Assegnazione di un valore
+
+                <jsp:setProperty name="beanName" property="propertyName" value="propertyValue"/>
+
+            - Passaggio di un parametro della richiesta
+
+                <jsp:setProperty name="beanName" property="propertyName" param="parameterName"> 
+            
+            - Molto rapido per definire le proprietà del Bean attraverso dati provenienti da un forum 
+
+                <jsp:setProperty name="beanName" property="*">
+            
+                . "*" fa corrispondere tutti i parametri dell'oggetto richiesta ai metodi set del bean e passa i valori tra di essi.
+
+        - Creato il bean è possibile leggerne le proprietà con il tag jsp:getProperty
+
+            <jsp:getProperty name="beanName" property="propertyName">
+
+    
 
 Librerie di tag personalizzati
 Meccanismo di estensione dei tag JSP predefiniti. Consente la definizione di nuovi tag da parte del programmatore, nuovi tag possono incapsulare complesse funzionalità
