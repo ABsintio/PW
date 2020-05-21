@@ -1,6 +1,6 @@
 #!/bin/bash
 jav=`find . -regex '.*\.java'`
-for i in ${java}; do
+for i in ${jav}; do
     echo $i
 done
 
