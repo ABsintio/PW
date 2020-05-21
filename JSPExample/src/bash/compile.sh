@@ -1,5 +1,9 @@
 #!/bin/bash
 jav=`find . -regex '.*\.java'`
+for i in ${java}; do
+    echo $i
+done
+
 if [ ! -z $jav ]; then
     javac -cp ".:./src/lib/*" -d ./WEB-INF/classes ./src/**.java
     jar cfv ./WEB-INF/lib/servlet.jar ./WEB-INF/classes/.*.class
