@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Impostazione del colore di JellyBean</title>
-    <%@page language="java"%>
-    <jsp:useBean id="jb" scope="session" class="src.beans.JellyBean">
 </head>
+<%@page language="java"%>
+<jsp:useBean id="jb" scope="session" class="src.beans.JellyBean"/>
 <body>
     <form action="leggi.jsp" method="get">
         <strong>Scegli il colore del bean: </strong><br>
