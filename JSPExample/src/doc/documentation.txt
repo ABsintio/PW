@@ -88,6 +88,17 @@ Delimitate da <%! e %> e consentono la definizione di variabili e metodi attrave
 Azioni standard
 tag JSP dal comportamento predefinito, comportano l'esecuzione di codice, parametrizzato in base agli attributi del tag.
 
+    - <jsp:include ...> 
+        - consente l'inclusione di contenuto dinamico in una pagina JSP.
+        - Più flessibile della direttiva include <%@include file=...%>
+            - richiede maggiore overhead quando il contenuto della pagina cambia frequentemente.
+            - la direttiva include il codice al momento della traduzione (serie di print), mentre l'azione standard include il 
+              codice solo al momento dell'esecuzione. 
+        - Attributi:
+            - page -> specifica l'url path relativo della risorsa da includere (stessa WEBapp).
+            - flush -> specifica se il buffer dovrebbe essere "pulito" prima dell'inclusione (default = true)
+    
+
 Librerie di tag personalizzati
 Meccanismo di estensione dei tag JSP predefiniti. Consente la definizione di nuovi tag da parte del programmatore, nuovi tag possono incapsulare complesse funzionalità
 
@@ -157,4 +168,3 @@ Le pagine JSP possono accedere ad oggetti definiti in diverse aree di visibilit�
                 
                 Viene eliminato il riferimento a tali oggetti nel momento in cui viene la sessione termina (per volere dell'utente oppure timeout). Oggetti impliciti
                 - session (javax.servlet.http.HttpSession) sessione del client.
-

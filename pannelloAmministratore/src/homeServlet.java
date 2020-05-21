@@ -76,7 +76,7 @@ public class homeServlet extends HttpServlet {
         // con la back-arrow. Quindi dal momento che tornando indietro con quella 
         // non è voglio invalidare la sessione, inserisco un attributo alla richiesta
         // che permetterà al metodo doGET della servlet PannelloAmministratore, quale
-        // tra le due richieste è.
+        // tra le due richieste.
         request.setAttribute("exit", "1");
         RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher(
             "/PannelloAmministratore"

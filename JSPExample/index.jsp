@@ -30,5 +30,6 @@
     <a href="./src/esempioDichiarazione.jsp">Esempio di Dichiarazione</a><br>
     <a href="./src/esempioOggettoPage.jsp">Esempio di uso oggetto Page</a><br>
     <a href="./src/esempioErrorPage.jsp">Esempio di uso oggetto Exception</a><br>
+    <a href="./src/include.jsp">Esempio di utilizzo dell'azione standard jsp:include</a><br>
 </body>
 </html>
