@@ -53,3 +53,11 @@ Le API delle servlet non forniscono i metodi "setter" corrispondenti ai metodi "
 AUTENTICAZIONE BASIC
 
 Quando un client tenta di accedere ad un risorsa protetta, il servlet container invia automaticamente una finestra di richiesta di nome utente e password. L'invio della finestra di richiesta avviene in modo trasparente alle pagine JSP e alle servlet. Questo metodo manca completamente di sicurezza. Le password vegono trasmesse con la codifica base64. 
+
+AUTENTICAZIONE FORM
+
+Permette di controllare l'aspetto ed il comportamento della pagina di login. Il metodo basato su form funzione come il metodo basic ma viene visualizzata la pagina di login anzichè una finestra di dialogo. Viene inoltre specificata una pagina di errore per il caso di mancata autenticazione. La password viene trasmessa con la codifica base64. Bisogna quindi 
+
+    - Implementare una pagina di login 
+    - Implementare una pagina di errore in caso di mancata autenticazione
+    - Nel descrittore specificare che si adotta l'autenticazione basata su form ed il nome della error page.
