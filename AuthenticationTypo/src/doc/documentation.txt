@@ -72,3 +72,29 @@ Quando un client tenta di accedere ad una risorsa protetta, il servlet container
     - URL
 
 Per realizzare l'autenticazione secondo lo schema digest ci si comporta esattamente come BASIC ma specificando DIGEST.
+
+APPROCCIO PROGRAMMATO
+
+L'approccio dichiarativo all'autenticazione è basato interamente sul servlet container che gestisce i nomi degli utenti, le password e i ruoli. L'approccio programmato implica invece la gestione diretta della sicurezza da parte di servlet e pagine JSP. Quali sono i problemi con la dichiarativa? 
+
+    - l'accesso o è tutto o niente: gli utenti possono accedere alle risorse protette oppure essere bloccati,
+      senza alternative ulteriori.
+    - Non è possibile proporre agli utenti contenuti diversi a seconda dei ruoli ricoperti.
+    - L'accesso basato esclusivamente su password è gestito completamente dal server.
+    - La soluzione non è sempre portabile
+    - I server devono supportare qualche metodo per la definizione di utenti, password e ruoli, ma server 
+      diversi lo fanno in modo diverso.
+    - E' necessario modificare il web.xml
+
+Le risorse protette (servlets e pagine JSP) sono responsabili della gestione della propria sicurezza. La cosa principale è la portabilità del codice, dal momento che non ci sono elementi della web-application che non dipendono dal particolare server utilizzato. Non sono necessarie utleriori specifiche nel descrittore. Per prevenire accessi non autorizzati ciascuna servlet o JSP deve autenticare l'utente o verificare che sia già autenticato. Per preservare la sicurezza dei dati sulla rete ogni servlet o JSP deve controllare il protocollo usato: se utenti provano ad utilizzare una connessione HTTP la servlet o JSP devono redirigere le richieste sul protocollo HTTPS.
+
+DICHIARATIVA + PROGRAMMATICO
+
+Si possono combinare i due approcci, in questo modo: si fa affidamento sul server per la gestione dei nomi, passowrd e ruoli attraverso metodi dichiarativi (BASIC, FORM, DIGEST); si gestisce l'accesso alle risorse in modo esplicito dalle servlet o dalle JSP. 
+
+Per implementare un tale approccio combinato si fa uso dei seguenti metodi di HttpServletRequest
+
+    - Boolean isUserInRole(String)
+    - String getRemoteUser()
+    - Principal getUserPrincipal()
+

@@ -40,10 +40,17 @@
         </form-login-config>
     </login-config>
 
-<!--
+<!-- 
+    <login-config>
+        <auth-method>BASIC</auth-method>
+        <realm-name>Nome</realm-name>
+    </login-config>
+-->
+
+<!-- 
     <login-config>
         <auth-method>DIGEST</auth-method>
-        <realm-name>Esempio di autenticazione Digest</realm-name>
+        <realm-name>Nome</realm-name>
     </login-config>
 -->
 </web-app>
