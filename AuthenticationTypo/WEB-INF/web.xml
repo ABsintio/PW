@@ -6,6 +6,10 @@
     <display-name>Web app per test di meccanismi di sicurezza</display-name>
     <description>Test dei meccanismi di sicurezza</description>
 
+    <welcome-file-list>
+        <welcome-file>/index.html</welcome-file>
+    </welcome-file-list>
+
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>Una pagina protetta</web-resource-name>
@@ -34,7 +38,7 @@
         <realm-name>Esempio di autenticazione BASIC</realm-name>
     </login-config>
 -->
-
+<!--
     <login-config>
         <auth-method>FORM</auth-method>
         <realm-name>Esempio di autenticazione FORM</realm-name>
@@ -43,5 +47,10 @@
             <form-error-page>/src/error.jsp</form-error-page>
         </form-login-config>
     </login-config>
+-->
 
+    <login-config>
+        <auth-method>DIGEST</auth-method>
+        <realm-name>Esempio di autenticazione Digest</realm-name>
+    </login-config>
 </web-app>

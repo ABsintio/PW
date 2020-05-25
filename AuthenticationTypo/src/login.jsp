@@ -7,7 +7,7 @@
         Per favore inserisci i tuoi dati: <br>
     </font>
     <!-- L'azione del modulo di login viene chiamata con j_security_check -->
-    <form action="j_security_check" method="POST">
+    <form action="/AuthenticationTypo/j_security_check" method="POST">
         <table>
             <tr>
                 <td>Name: </td>

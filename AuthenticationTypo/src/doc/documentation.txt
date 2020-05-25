@@ -61,3 +61,14 @@ Permette di controllare l'aspetto ed il comportamento della pagina di login. Il 
     - Implementare una pagina di login 
     - Implementare una pagina di errore in caso di mancata autenticazione
     - Nel descrittore specificare che si adotta l'autenticazione basata su form ed il nome della error page.
+
+AUTENTICAZIONE DIGEST
+
+Quando un client tenta di accedere ad una risorsa protetta, il servlet container invia automaticamente una finestra di richiesta di nome utente e password. L'invio della finestra di richiesta avviene in modo trasparente alle JSP e alle servlet. La password viene codificata con metodi di hashing. Lo schema DIGEST è basato su un meccanismo di domanda-risposta. L'entità responsabile dell'autenticazione (il server) propone all'utente un valore nonce (ogni volta diverso e valido solo per la richiesta corrente). Affinchè l'utente possa essere autenticato, deve rispondere con un valore di checksum calcolato in base a 
+    
+    - Username e password
+    - Il valore nonce proposto
+    - Il metodo HTTP 
+    - URL
+
+Per realizzare l'autenticazione secondo lo schema digest ci si comporta esattamente come BASIC ma specificando DIGEST.
