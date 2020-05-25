@@ -1,0 +1,55 @@
+AUTENTICAZIONE 
+
+Quando un utente tenta di accedere ad una risorsa protetta (es. jsp) se è già stato autenticato la risorsa gli viene resa disponibile, altrimenti viene chiesto all'utente di digitare nome e password. Se nome e password non possono essere autenticati, viene visualizzato un errore e l'utente ha la possibilità di scrivere nuovamente i dati, altrimenti la risorsa viene resa disponibile. Esistono due approcci all'autenticazione 
+
+    - Dichiarativo: autenticazione gestita interamente sul servlet container
+    - Programmato: gestione della sicurezza da parte di servlet e JSP.
+
+AUTENTICAZION DICHIARATIVA
+
+Gli aspetti relativi alla sicurezza sono interamente gestiti dal servlet container. Per prevenire accessi non autorizzati:
+
+    1. si usa il descrittore della web-app per dichiarare che certe risorse sono riservate a utenti che 
+       rivestono certi ruoli. 
+    2. Si definisce un metodo di autenticazione
+    3. Quando viene richiesta una risorsa protetta, il server richiede all'utente username e password, li  
+       confronta con un set predefinito e, automaticamente, tiene traccia degli utenti già autenticati. Questo è 
+       completamente trasparente alle servlet e alle pagine JSP. 
+
+Per preservare la sicurezza dei dati sulla rete 
+    
+    - Si usa il descrittore della web application per specificare che a certe risorse si può accedere solo 
+      attraverso una connessione HTTPs. Se gli utenti provano ad usare una connessione http vengono forzati ad 
+      usare https con meccaniscmi di redirezione
+
+Tipi di autenticazione dichiarativa (la scelta viene specificata nel web.xml in corrispondenza dei tag 
+log-config e auth-method):
+    
+    - Autenticazione BASIC 
+    - Autenticazione basata su form 
+    - Autenticazione DIGEST
+
+AUTENTICAZIONE PROGRAMMATA
+
+Le risorse protette (servlet e pagine JSP) sono responsabili della gestione della propria sicurezza. Questo permette di avere una certa portabilità del codice. Non ci sono elementi della webapp che dipendono dal particolare server utilizzato. Non sono necessarie ulteriori specifiche nel web.xml. Per prevenire accessi non autorizzati ciascuna servlet o JSP deve autenticare l'utente o verificare che sia già autenticato. Inoltre per preservare la sicurezza dei dati sulla rete ogni servlet o pagina JSP deve cnontrollare il protocollo utilizzato. Se gli utenti provano ad usare una connessione http la servlet o la pagina JSP devono redirigere le richieste sul protocollo HTTPs.
+
+PRINCIPALI E RUOLI 
+
+L'utente è principal, ossia entità denominate, che in genere rappresentano singoli individui o società. Essi possono ricoprire uno o più ruoli (roles). Le restrizioni di sicurezza della specifica delle servlet, associano i ruoli con le risorse protette. 
+
+Le restrizioni specificate nel file web.xml associano i ruoli alle risorse. L'associazione dei ruoli ai principali è compito del servlet container (file <catalina-home>/conf/tomcat-users.xml).
+
+Metodi HttpServletRequest
+
+    - Principal getUserPrincipal() -> riferimento a java.security.Principal 
+    - Boolean isUserInRole(String) -> Stabilisce se un utente ricopre il ruolo <String>
+    - String getRemoteUser() -> return nome utente utilizzato per il login. 
+    - String getAuthType() -> return tipo di autenticazione (BASIC, FORM, DIGEST)
+    - Boolean isSecure() -> return True se la connession è http o https.
+    - String getScheme() -> fornisce lo schema che rappresenta il meccanismo di trasporto (http/s, ftp o altro).
+
+Le API delle servlet non forniscono i metodi "setter" corrispondenti ai metodi "getter" getUserPrincipal e getRemoteUser, in quanto le applicazioni non possono impostare principali e ruoli. questi possono essere impostati solo dai contenitori di servlet.
+
+AUTENTICAZIONE BASIC
+
+Quando un client tenta di accedere ad un risorsa protetta, il servlet container invia automaticamente una finestra di richiesta di nome utente e password. L'invio della finestra di richiesta avviene in modo trasparente alle pagine JSP e alle servlet. Questo metodo manca completamente di sicurezza. Le password vegono trasmesse con la codifica base64. 
