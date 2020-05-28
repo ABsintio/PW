@@ -19,4 +19,19 @@
         <bodycontent>empty</bodycontent>
         <info>Inserisce un testo di ben venuto</info>
     </tag>
+
+    <tag>
+        <name>welcome2</name>
+        <tagclass>tags.AttributeTag</tagclass>
+        <bodycontent>empty</bodycontent>
+        <info>
+            Inserisce un messaggio di benvenuto usando l'attributo "name"
+            per inserire il nome dell'utente loggatosi nel sistema.
+        </info>
+        <attribute>
+            <name>firstName</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
 </taglib>

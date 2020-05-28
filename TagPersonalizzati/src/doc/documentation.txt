@@ -43,3 +43,30 @@ Questa direttiva è necessaria per poter utilizzare i tag personalizzati. Indivi
 
 SCRIVERE LA PAGINA JSP CHE UTILIZZA IL TAG PERSONALIZZATO
 
+Esmpio
+
+    <html>
+    <head>
+        <title>Pagina che visualizza un messaggio di benvenuto</title>
+    </head>
+    <body>
+        <%@taglib uri="/WEB-INF/tlds/lib.tld" prefix="util"%>
+        Questo messaggio: <b><util:welcome/></b></br>
+        è stato prodotto da un tag personalizzato.
+    </body>
+    </html>
+
+CUSTOM TAG CON ATTRIBUTI
+
+I tag personalizzati possono avere un qualunque numero di attributi, obbligatori o facoltativi specificati come attributo=valore, es <util:iterate times="4">
+
+    1. Scrivere il tag con il relativo attributo nel file JSP.
+    2. Aggiungere un tag di attributo al TLD.
+    3. Implementare il metodo setAttributo nell'handler del tag.
+
+Quando il container incontra il tag crea l'oggetto tag handler e invoca i metodi setter necessari per impostare i valori dei degli attributi. E' prassi comune implementare anche un metodo getter nell'handler del tag per permettere ai tag annidati di accedere alle proprietà degli altri. Il file tld deve contenere per ogni tag l'elenco degli attributi ad esso relativi, ciascuno specificato attraverso un elemento <attribute> che contiene a sua volta gli elementi 
+
+    - <name> (nome dell'attributo)
+    - <required> (indica se l'attributo è necessario oppure no)
+    - <rtexprvalue> (indica se l'attributo deve essere specificato come stringa o se è permessa 
+                     l'elaborazione a tempo di esecuzione).
