@@ -2,3 +2,9 @@
  "-//Sun Microsystems, Inc.//DTD Web Application 2.2//EN"
  "http://java.sun.com/j2ee/dtds/web-app_2_2.dtd">
 
+<web-app>
+    <display-name>Tag Personalizzati App</display-name>
+    <description>
+        Semplice web app per la lezione Lezione10.pdf circa i Tag personalizzati
+    </description>
+</web-app>
