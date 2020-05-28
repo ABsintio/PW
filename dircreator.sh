@@ -45,7 +45,8 @@ EOF
 
 # Sposto anche le librerie
 sudo cp /opt/tomcat/latest/lib/servlet-api.jar ./src/lib/
-sudo chown riccbrand servlet-api.jar
+sudo cp /opt/tomcat/latest/lib/jsp-api.jar ./src/lib/
+sudo chown riccbrand ./src/lib/servlet-api.jar ./src/lib/jsp-api.jar
 
 cd ..
 

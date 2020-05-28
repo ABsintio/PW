@@ -1,0 +1,3 @@
+TAG PERSONALIZZATI
+
+Sono la caratteristica più potente delle pagine jsp in quanto incapsulano le funzionalità complesse del software ed aiutano di molto gli sviluppatori e gli autori di pagine web. Le funzionalità dei tag vengono definite all'interno di classi Java che implementano l'interfaccia javax.servlet.jsp.tagext.Tag. 
