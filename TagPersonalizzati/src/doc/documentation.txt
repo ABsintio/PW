@@ -1,3 +1,45 @@
 TAG PERSONALIZZATI
 
-Sono la caratteristica più potente delle pagine jsp in quanto incapsulano le funzionalità complesse del software ed aiutano di molto gli sviluppatori e gli autori di pagine web. Le funzionalità dei tag vengono definite all'interno di classi Java che implementano l'interfaccia javax.servlet.jsp.tagext.Tag. 
+Sono la caratteristica più potente delle pagine jsp in quanto incapsulano le funzionalità complesse del software ed aiutano di molto gli sviluppatori e gli autori di pagine web. Le funzionalità dei tag vengono definite all'interno di classi Java che implementano l'interfaccia javax.servlet.jsp.tagext.Tag e per poter compilare le classi che definiscono i tag bisogna includere il file /opt/tomcat/latest/lib/jsp-api.jar nel CLASSPATH. 
+
+COME DEFINIRE I TAG
+
+I passi che bisogna effettuare per definire un tag personalizzato sono i seguenti:
+    
+    1. Definire, per ogni tag, una classe Handler del tag che ne implementi le funionalità.
+    2. Definire un descrittore della libreria di tag (TLD)
+    3. Scrivere le pagine JSP che fanno uso della libreri dei tag personalizzati 
+        - Invocare la direttiva per la localizzazione del descrittore della TLD 
+        - Utilizzare i tag all'interno della pagina.
+
+LA CLASSE HANDLER
+
+Essa è la classe contiene la logica del tag ed implementa l'interfaccia Tag. Quando il container incontra un tag personalizzato creao l'oggetto tag handler ed invoca i metodi dell'interfaccia Tag necessari ad attivare la logica del tag. In genere si estendono le classi TagSupport oppure BodyTagSupport che implementano l'interfaccia Tag. 
+
+    - TagSupport viene utilizzata per tag che non elaborano il contenuto del proprio body
+    - BodyTagSupport viene utilizzata per tag che elaborano il contenuto del proprio body
+
+I metodi che vengnon definiti dall'interfaccia Tag sono i seguenti 
+    
+    - void setPageContext(PageContext)
+    - void setParent(Tag)
+    - int doStartTag() throws JspException
+    - int doEndTag()   throws JspException
+    - void release()
+    - Tag getParent()
+
+I primi cinque vengono invocati nell'ordine indicato quando viene elaborato un tag all'interno di una pagina JSP.
+I tag handler devono obbligatoriamente essere definiti all'interno di package. 
+
+DESCRITTORE DELLA LIBRERIA
+
+Questa direttiva è necessaria per poter utilizzare i tag personalizzati. Individua il percorso di un descrittore della libreria e un prefisso che verrà utilizzato per accedere agli elementi della libreria.
+
+    - uri: Specifica il percorso relativo o assoluto del tag library description (tld)
+    - prefix: Sepecifica il prefisso richiesto per distinguere i tag personalizzati dei tag 
+      built-in. I prefissi jsp, jspx, java, javax, servlet, sun e sunw sono riservati.
+
+    <%@ taglib uri="/WEB-INF/tlds/mialib.tld" prefix=""util%>
+
+SCRIVERE LA PAGINA JSP CHE UTILIZZA IL TAG PERSONALIZZATO
+

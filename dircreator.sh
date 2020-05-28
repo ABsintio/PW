@@ -4,8 +4,8 @@ name_dir=$1
 
 mkdir $1
 cd $1
-inner_dir_src=( "bash" "html" "lib" )
-inner_dir_web=( "classes" "lib" )
+inner_dir_src=( "bash" "html" "lib" "tags" )
+inner_dir_web=( "classes" "lib" "tlds" )
 mkdir "./src" "./WEB-INF"
 
 for i in ${inner_dir_src[@]}; 
@@ -20,9 +20,11 @@ done
 
 # Prendo un file qualsiasi web.xml
 path=`find .. -regex '.*web\.xml' | tail -n 1`
+path_tag=`find .. -regex '.*lib\.tld' | tail -n 1`
 
 touch index.html
 touch ./WEB-INF/web.xml
+touch ./WEB-INF/tlds/lib.tld
 
 python3.8 - <<EOF
 import time
@@ -36,6 +38,22 @@ try:
 			break
 		streamw.write(line)
 	print("Scrittura nel file ./$1/WEB-INF/web.xml andata a buon fine")
+except Exception as e:
+	print("Qualcosa è andato storto -> ", e)
+finally:
+	end = time.time()
+	print("Procedura completata in {ms} millisecondi".format(ms = str(int(end - start))))
+
+try:
+	start = time.time()
+	streamr = open("${path_tag}", mode="r")
+	streamw = open("./WEB-INF/tlds/lib.tld", mode="w")
+	print("Prendo i dati dal file ${path_tag}")
+	while (line := streamr.readline()):
+		if line == "<taglib>\n":
+			break
+		streamw.write(line)
+	print("Scrittura nel file ./$1/WEB-INF/tlds/lib.tld andata a buon fine")
 except Exception as e:
 	print("Qualcosa è andato storto -> ", e)
 finally:

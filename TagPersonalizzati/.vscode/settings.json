@@ -1,0 +1,6 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "/home/riccbrand/Scrivania/UNIVERSITA/TerzoAnno/SecondoSemestre/PW/WEB-PAGES/TagPersonalizzati/**/*.jar"
+    ]
+}

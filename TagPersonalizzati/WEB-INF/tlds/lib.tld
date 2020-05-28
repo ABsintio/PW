@@ -1,0 +1,22 @@
+<!DOCTYPE taglib PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.2//EN"
+ "http://java.sun.com/j2ee/dtds/web-jsptaglibrary_1_1.dtd">
+
+<taglib>
+    <!-- Versione della libreria -->
+    <tlibversion>1.0</tlibversion>
+    <!-- Versione della specifica JSP -->
+    <jspversion>1.1</jspversion>
+    <!-- Descrizioni -->
+    <shortname>Libreria Personale</shortname>
+    <info>Una semplice libreria di tag di generica utilità</info>
+    <tag>
+        <!-- Il nome del tag così come viene utilizzato nella pagina JSP -->
+        <name>welcome</name>
+        <!-- La classe JAVA che implementa la funzionalità del tag (handler) -->
+        <tagclass>tags.WelcomeTagHandler</tagclass>
+        <!-- Specifica il tipo di contenuto del tag: empty, tagdependent o JSP -->
+        <bodycontent>empty</bodycontent>
+        <info>Inserisce un testo di ben venuto</info>
+    </tag>
+</taglib>
