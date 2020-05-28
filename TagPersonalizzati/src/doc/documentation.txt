@@ -70,3 +70,33 @@ Quando il container incontra il tag crea l'oggetto tag handler e invoca i metodi
     - <required> (indica se l'attributo è necessario oppure no)
     - <rtexprvalue> (indica se l'attributo deve essere specificato come stringa o se è permessa 
                      l'elaborazione a tempo di esecuzione).
+
+CICLO DI VITA DI UN TAG 
+
+1. Il metodo setPageContext(PageContext) configura il contesto di pagina associato al tag.
+2. Il metodo setParent(Tag) associa un genitore al tag:
+    - Tutti i tag hanno un genitore, che è null per i tag di livello superiore ed è il tag 
+      contenitore per i tag annidati
+
+    <esempio:tag_esterno>
+        <esempio:tag_intermedio>
+            <esmepio:tag_interno>
+            ...
+            </esempio:tag_interno>
+        </esempio:tag_intermedio>
+    </esempio:tag_esterno>
+
+    Entrambi questi metodi sono risolvti a coloro che implementano il contenitore delle servlet e non agli sviluppatori JSP.
+
+3. Se il tag prevede degli attributi, vengono invocati tutti i metodi necessari a configurare i valori (set)
+4. Il metodo doStartTag() viene invocato subito dopo i primi due e gli eventuali metodi setter. 
+    - Tale metodo resituisce un valore intero che condiziona l'elaborazione del tag.
+        - SKIP_BODY: il corpo del tag non viene considerato
+        - EVAL_BODY_INCLUDE: il corpo del tag deve essere trascritto invariato.
+
+   Il metodo doEndTag() viene chiamato in corrispondenza del tag di chiusura 
+    - Tale metodo resituisce un valore intero che condiziona l'elaborazione del tag.
+        - SKIP_PAGE: la parte di pagina oltre il tag di chiusura viene ignorata
+        - EVAL_PAGE: la parte di pagine oltre il tag di chiusura viene considerata 
+
+5. Il metodo release() rilascia le risorse dell'handler del tag. 

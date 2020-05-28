@@ -34,4 +34,15 @@
             <rtexprvalue>true</rtexprvalue>
         </attribute>
     </tag>
+
+    <tag>
+        <name>form_util</name>
+        <tagclass>tags.FormRecordTag</tagclass>
+        <bodycontent>empty</bodycontent>
+        <attribute>
+            <name>value</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
 </taglib>
