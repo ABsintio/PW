@@ -2,7 +2,7 @@
 <head>
     <title>Heading Tag</title>
 </head>
-<%@ taglib uri="lib.tld" prefix="formato"%>
+<%@ taglib uri="/WEB-INF/tlds/lib.tld" prefix="formato"%>
 <body>
     <formato:heading bgColor="#C0C0C0">
         Default Heading

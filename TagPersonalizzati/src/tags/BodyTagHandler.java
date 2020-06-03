@@ -26,9 +26,11 @@ public class BodyTagHandler extends TagSupport {
     public int doStartTag() throws JspException{
         try {
             JspWriter out = pageContext.getOut();
-            out.println(
-                "<table bgcolor=\"" + this.bgColor + "\"" +
-                this.border != null ? ">" : " border=\"" + this.border + "\">");
+            out.println( "<table bgcolor=\"" + this.bgColor + "\"");
+            if (this.border != null) {
+                out.println(" border=\"" + this.border + "\"");
+            }
+            out.println(">");
         } catch (IOException ioException) {
             throw new JspException(ioException.getMessage());
         }

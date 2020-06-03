@@ -1,0 +1,29 @@
+<!DOCTYPE taglib PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.2//EN"
+ "http://java.sun.com/j2ee/dtds/web-jsptaglibrary_1_1.dtd">
+
+<taglib>
+    <tlibversion>1.0</tlibversion>
+    <jspversion>1.1</jspversion>
+    <shortname>Libreria Tag esempio sulla sicurezza</shortname>
+    <tag>
+        <name>enforceLogin</name>
+        <tagclass>tags.EnforceLoginTag</tagclass>
+        <bodycontent>JSP</bodycontent>
+        <attribute>
+            <name>loginPage</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>errorPage</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+    <tag>
+        <name>showErrors</name>
+        <tagclass>tags.ShowErrorsTag</tagclass>
+        <bodycontent>empty</bodycontent>
+    </tag>
+</taglib>
