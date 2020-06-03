@@ -3,7 +3,7 @@ jav=`find . -regex '.*\.java'`
 
 if [ ! -z "`echo $jav | tail -n 1`" ]; then
     for file in ${jav}; do 
-        javac -cp ".:./src/lib/*" -d ./WEB-INF/classes $file
+        javac -cp ".:./src/lib/*:./src/lib/beans/*" -d ./WEB-INF/classes $file
     done
 
     class=`find . -regex '.*\.class'`
