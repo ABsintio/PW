@@ -100,3 +100,18 @@ CICLO DI VITA DI UN TAG
         - EVAL_PAGE: la parte di pagine oltre il tag di chiusura viene considerata 
 
 5. Il metodo release() rilascia le risorse dell'handler del tag. 
+
+TAG CHE INCLUDONO IL CORPO
+
+Questi tag non richiedono i estendere BodyTagSupport se il corpo del tag non richiede elaborazione.
+
+    <prefx:tagName>
+        JSP Content
+    </prefix:tagName>
+    <prefix:tagName att1="val1" ...>
+        JSP Content
+    </prefix:tagName>
+
+Viene utilizzato il metodo doStartTag per includere il corpo. Questo restituisce EVAL_BODY_INCLUDE invece del classico SKIP_BODY. Il metodo che definisce le azioni da intraprendere dopo l'inclusione del corpo è doEndTag. Quest'ultimo restituisce EVAL_PAGE oppure SKIP_PAGE a seconda dei casi.
+
+L'unica novità rispetto ai tag precedente è che nella definizione del tag nel tld dobbiamo impostare anche il campo <bodycontent>JSP</bodycontent>.

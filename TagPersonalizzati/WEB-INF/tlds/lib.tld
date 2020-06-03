@@ -45,4 +45,21 @@
             <rtexprvalue>true</rtexprvalue>
         </attribute>
     </tag>
+    
+    <tag>
+        <name>heading</name>
+        <tagclass>tags.BodyTagHandler</tagclass>
+        <bodycontent>JSP</bodycontent>
+        <info>Tag con corpo.</info>
+        <attribute>
+            <name>bgColor</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>border</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
 </taglib>
