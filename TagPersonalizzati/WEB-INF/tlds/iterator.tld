@@ -1,0 +1,21 @@
+<!DOCTYPE taglib PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.2//EN"
+ "http://java.sun.com/j2ee/dtds/web-jsptaglibrary_1_1.dtd">
+
+<taglib>
+    <tlibversion>1.0</tlibversion>
+    <jspversion>1.1</jspversion>
+    <shortname>iteratorelib</shortname>
+    <info>Libreria di tag personalizzati per iteratori</info>
+    <tag>
+        <name>iterate</name>
+        <tagclass>tags.IteratorTag</tagclass>
+        <bodycontent>JSP</bodycontent>
+        <info>Scrive iterativamente gli elementi di una collezione</info>
+        <attribute>
+            <name>collection</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+</taglib>

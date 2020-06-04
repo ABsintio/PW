@@ -6,7 +6,7 @@
 <body>
     <font size=4 color="red"><security:showErrors /></font>
     <p><font size=5 color="blue">Please Login</font> <hr>
-    <form action="<%= response.encodeURL("authenticate")%>" method="POST">
+    <form action="/TagPersonalizzati/authenticate" method="POST">
         <table>
             <tr>
                 <td>Name: </td>

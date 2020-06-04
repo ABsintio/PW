@@ -6,6 +6,6 @@
 <body>
     <font size=4 color="red">Login Failed because:
     <security:showErrors /></font>
-    Click <a href="login.jsp">here </a> to retry login.
+    Click <a href="./src/login.jsp">here </a> to retry login.
 </body>
 </html>

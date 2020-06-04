@@ -115,3 +115,45 @@ Questi tag non richiedono i estendere BodyTagSupport se il corpo del tag non ric
 Viene utilizzato il metodo doStartTag per includere il corpo. Questo restituisce EVAL_BODY_INCLUDE invece del classico SKIP_BODY. Il metodo che definisce le azioni da intraprendere dopo l'inclusione del corpo è doEndTag. Quest'ultimo restituisce EVAL_PAGE oppure SKIP_PAGE a seconda dei casi.
 
 L'unica novità rispetto ai tag precedente è che nella definizione del tag nel tld dobbiamo impostare anche il campo <bodycontent>JSP</bodycontent>.
+
+INTERFACCIA BODYTAG 
+
+Gli handler di tag con corpo che implementano l'interfaccia BodyTag dispongono di due funzionalità mancanti agli altri tag:
+    - Possono contenere codice iterativo
+    - Possono manipolare il contenuto del loro corpo 
+
+L'interfaccia BodyTag estende l'interfaccia Tag (estende IterationTag che estende Tag) definendo i metodi elencati di seguito:
+    
+    1. void setBodyContent()
+    2. void doInitBody()
+    3. int doAfterBody()
+
+Il metodo doStartTag() restituisce un valore intero che condiziona l'elaborazione del corpo del tag 
+    - SKIP_BODY: il corpo del tag non deve essere considerato 
+    - EVAL_BODY_INCLUDE: il corpo del tag viene elaborato:
+        - il corpo viene valutato e passato in output
+        - Viene invocato il metodo doAfterBody() (eseguito una o più volte)
+        - ... poi viene invocato doEndTag()
+    - EVAL_BODY_BUFFERED: il corpo del tag viene elaborato e viene creato un oggetto BodyContent (sottoclasse di JspWriter) utilizzato come oggetto out (Nota: BodyContent viene creato solo se si ritorna EVAL_BODY_BUFFERED).
+
+Il metodo setBodyContent() configura le proprietà dell'oggetto BodyContent. Quando viene invocato, il valore dell'oggetto implicito out viene sostituito nell'oggetto PageContext.
+
+Il metodo doInitBody() viene invocato dal container dopo setBodyContent e prima che il corpo del tag venga valutato per la prima volta. Questo metodo viene invocato per tag vuoti e per i quali il metodo doStartTag abbia restituito SKIP_BODY o EVAL_BODY_INCLUDE.
+
+Il metodo in cui bisogna definire il comportamento per tag che devono modificare/elaborare il corpo è doAfterBody. Tale metodo restituisce un valore che condiziona l'elaborazione del tag: SKIP_BODY, EVAL_BODY_AGAIN.
+
+CLASSE BODYTAGSUPPORT
+
+Tale classe estende la classe TagSupport e implementa BodyTag. Introduce i nuovi metodi
+
+    1. BodyContent getBodyContent()
+    2. JspWriter getPreviousOut()
+        -> restituisce lo scrittore associato al tag genitore o la variabile implicita out se il tag è di livello superiore.
+
+Per impostazione predefinita le estensioni di BodyTagSupport valutano il corpo del tag una volta soltanto.
+
+FUNZIONAMENTO DI BODYCONTENT 
+
+Il contenuto del corpo è rappresentato dalla classe BodyContent (scrittore con buffer) che estende JspWriter. I contenitori servlet matengono uno stack di oggetto BodyContent per fare in modo che un tag annidato non sovrascriva il contenuto del corpo di uno dei tag antenati. Ciascun oggetto BodyContent conserva un riferimento allo scrittore con buffer del livello inferiore dello stack. Tale scrittore è noto come PreviousOut ed è disponibile attraverso 
+    - BodyContent.getEnclosingWriter
+    - BodyTagSupport.getPreviousOut
