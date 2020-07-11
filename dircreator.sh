@@ -64,7 +64,8 @@ EOF
 # Sposto anche le librerie
 sudo cp /opt/tomcat/latest/lib/servlet-api.jar ./src/lib/
 sudo cp /opt/tomcat/latest/lib/jsp-api.jar ./src/lib/
-sudo chown riccbrand ./src/lib/servlet-api.jar ./src/lib/jsp-api.jar
+sudo cp ../LIB/mysql-connector-java-8.0.20.jar ./src/lib/
+sudo chown riccbrand ./src/lib/servlet-api.jar ./src/lib/jsp-api.jar ./src/lib/mysql-connector-java.8.0.20.jar
 
 cd ..
 
