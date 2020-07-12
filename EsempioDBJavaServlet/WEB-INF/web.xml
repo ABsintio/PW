@@ -9,8 +9,16 @@
         <servlet-name>MySQLServlet</servlet-name>
         <servlet-class>MySQLServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SurveyServlet</servlet-name>
+        <servlet-class>Survey</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>MySQLServlet</servlet-name>
         <url-pattern>/MySQLServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SurveyServlet</servlet-name>
+        <url-pattern>/Survey</url-pattern>
     </servlet-mapping>
 </web-app>

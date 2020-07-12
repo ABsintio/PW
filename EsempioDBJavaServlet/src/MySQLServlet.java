@@ -76,5 +76,6 @@ public class MySQLServlet extends HttpServlet {
             }
         }
         out.println("</table></body></html>");
+        out.close();
     }
 }
