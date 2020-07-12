@@ -1,5 +1,5 @@
 import java.io.*;
-import java.util.*;
+// import java.util.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import java.sql.*;
@@ -25,7 +25,7 @@ public class MySQLServlet extends HttpServlet {
             "una servlet che esegue una query al DB</h1><br>\n" + 
             "<table border=\"1\" cellpadding=\"5\" cellspacing=\"0\" width=\"400\">\n"
         );
-        String connectionURL = "jdbc:mysql://localhost:3306/esempio";
+        String connectionURL = "jdbc:mysql://127.0.0.1:3306/esempio";
         Connection connection = null;
         Statement statement = null;
         ResultSet resultSet = null;
@@ -40,7 +40,7 @@ public class MySQLServlet extends HttpServlet {
                 System.exit(1);
             }
             // Connect to database
-            connection = DriverManager.getConnection(connectionURL);
+            connection = DriverManager.getConnection(connectionURL, "root", "$Fioretto$1998");
             // Create statement to query database
             statement = connection.createStatement();
             // query database
