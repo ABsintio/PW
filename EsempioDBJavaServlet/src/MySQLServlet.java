@@ -12,7 +12,7 @@ public class MySQLServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) 
-    throws ServletException, IOException{
+    throws ServletException, IOException {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
         out.println(
@@ -33,23 +33,16 @@ public class MySQLServlet extends HttpServlet {
         try {
             // Caricamento dinamico della classe e registrazione del driver 
             // presso il driver manager
-            try {
-                Class.forName("com.mysql.cj.jdbc.Driver");
-            } catch (ClassNotFoundException e) {
-                System.err.println(e.getMessage());
-                System.exit(1);
-            }
+            Class.forName("com.mysql.jdbc.Driver");
+
             // Connect to database
-            connection = DriverManager.getConnection(connectionURL, "root", "$Fioretto$1998");
+            connection = (Connection) DriverManager.getConnection(connectionURL, "root", "$Fioretto$1998");
             // Create statement to query database
             statement = connection.createStatement();
             // query database
-            String query_autori_libri = "";
-            query_autori_libri.concat(
-                "select Nome, Cognome, Titolo\n" +
-                "from Autori a, Libro l, Autore_Libro al\n" +
-                "where a.AutoreID = al.AutoreID and l.LibroID = al.LibroID"
-            );
+            String query_autori_libri = "select Nome, Cognome, Titolo\n" +
+                                        "from Autori a, Libro l, Autore_Libro al\n" +
+                                        "where a.AutoreID = al.AutoreID and l.LibroID = al.LibroID";
             resultSet = statement.executeQuery(query_autori_libri);
             // Process query result
             StringBuffer results = new StringBuffer();
@@ -70,10 +63,11 @@ public class MySQLServlet extends HttpServlet {
             out.println(results.toString());
 
         } catch (SQLException e) {
-            System.err.println("SQL Problem: " + e.getMessage());
-            System.err.println("SQL State: " + e.getSQLState());
-            System.err.println("Error: " + e.getErrorCode());
-            System.exit(1);
+            out.println("SQL Problem: " + e.getMessage());
+            out.println("SQL State: " + e.getSQLState());
+            out.println("Error: " + e.getErrorCode());
+        } catch (ClassNotFoundException c) {
+            out.println(c.getMessage());
         } finally {
             try {
                 if (connection != null) connection.close();
