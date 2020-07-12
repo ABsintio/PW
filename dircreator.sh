@@ -5,7 +5,7 @@ name_dir=$1
 mkdir $1
 cd $1
 inner_dir_src=( "bash" "html" "lib" "tags" )
-inner_dir_web=( "classes" "lib" "tlds" )
+inner_dir_web=( "classes" "lib" )
 mkdir "./src" "./WEB-INF"
 
 for i in ${inner_dir_src[@]}; 
@@ -20,11 +20,11 @@ done
 
 # Prendo un file qualsiasi web.xml
 path=`find .. -regex '.*web\.xml' | tail -n 1`
-path_tag=`find .. -regex '.*lib\.tld' | tail -n 1`
+# path_tag=`find .. -regex '.*lib\.tld' | tail -n 1`
 
 touch index.html
 touch ./WEB-INF/web.xml
-touch ./WEB-INF/tlds/lib.tld
+# touch ./WEB-INF/tlds/lib.tld
 
 python3.8 - <<EOF
 import time
@@ -43,7 +43,7 @@ except Exception as e:
 finally:
 	end = time.time()
 	print("Procedura completata in {ms} millisecondi".format(ms = str(int(end - start))))
-
+"""
 try:
 	start = time.time()
 	streamr = open("${path_tag}", mode="r")
@@ -59,6 +59,7 @@ except Exception as e:
 finally:
 	end = time.time()
 	print("Procedura completata in {ms} millisecondi".format(ms = str(int(end - start))))
+"""
 EOF
 
 # Sposto anche le librerie

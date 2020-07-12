@@ -25,7 +25,7 @@ public class MySQLServlet extends HttpServlet {
             "una servlet che esegue una query al DB</h1><br>\n" + 
             "<table border=\"1\" cellpadding=\"5\" cellspacing=\"0\" width=\"400\">\n"
         );
-        String connectionURL = "jdbc:mysql://127.0.0.1:3306/esempio";
+        String connectionURL = "jdbc:mysql://127.0.0.1:3306/esempio?serverTimezone=UTC";
         Connection connection = null;
         Statement statement = null;
         ResultSet resultSet = null;
@@ -34,7 +34,7 @@ public class MySQLServlet extends HttpServlet {
             // Caricamento dinamico della classe e registrazione del driver 
             // presso il driver manager
             try {
-                Class.forName("com.mysql.jdbc.Driver");
+                Class.forName("com.mysql.cj.jdbc.Driver");
             } catch (ClassNotFoundException e) {
                 System.err.println(e.getMessage());
                 System.exit(1);
