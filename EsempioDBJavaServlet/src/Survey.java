@@ -58,7 +58,7 @@ public class Survey extends HttpServlet {
                 out.println(resultsRs.getString(1) + ": ");
                 votes = resultsRs.getInt(3);
                 out.println(twoDigits.format((double) votes / total * 100));
-                out.println("% reponses: " + votes);
+                out.println("% reponses: " + votes + "<br />");
             }
             resultsRs.close();
             out.println("Total responses: " + total + "</body></html>");
