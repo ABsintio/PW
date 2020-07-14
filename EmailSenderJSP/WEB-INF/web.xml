@@ -2,3 +2,7 @@
  "-//Sun Microsystems, Inc.//DTD Web Application 2.2//EN"
  "http://java.sun.com/j2ee/dtds/web-app_2_2.dtd">
 
+<web-app>
+    <display-name>InvioEmailJSP</display-name>
+    <description>Vari esempi di utilizzo del package javax.mail di JavaMail</description>
+</web-app>
