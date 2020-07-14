@@ -8,12 +8,12 @@ inner_dir_src=( "bash" "html" "lib" "tags" )
 inner_dir_web=( "classes" "lib" )
 mkdir "./src" "./WEB-INF"
 
-for i in ${inner_dir_src[@]}; 
+for i in ${inner_dir_src[@]};
 do
 	mkdir ./src/$i
 done
 
-for j in ${inner_dir_web[@]}; 
+for j in ${inner_dir_web[@]};
 do
 	mkdir ./WEB-INF/$j
 done
@@ -66,15 +66,16 @@ EOF
 sudo cp /opt/tomcat/latest/lib/servlet-api.jar ./src/lib/
 sudo cp /opt/tomcat/latest/lib/jsp-api.jar ./src/lib/
 sudo cp ../LIB/mysql-connector-java-8.0.20.jar ./src/lib/
+sudo cp ../LIB/commons-fileupload-1.4.jar ./src/lib/
+sudo cp ../LIB/commons-fileupload-1.4.jar ./WEB-INF/lib/
 sudo chown riccbrand ./src/lib/servlet-api.jar ./src/lib/jsp-api.jar ./src/lib/mysql-connector-java.8.0.20.jar
+sudo chown riccbrand ./src/lib/commons-fileupload-1.4.jar ./WEB-INF/lib/commons-fileupload-1.4.jar
 
 cd ..
 
-# Trovo il file per compilare 
+# Trovo il file per compilare
 compiler=$(find . -regex '.*compile\.sh')
 cp -r $compiler "./${name_dir}/src/bash/"
 chmod u+x "./${name_dir}/src/bash/compiler.sh"
 
 sudo bash script.sh $1 "Inserita directory $1" 1
-
-

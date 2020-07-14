@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File html di upload</title>
+</head>
+<body>
+    <form name="myform" method="POST" action="./src/uploadfile.jsp" enctype="multipart/form-data">
+        Specifica il tuo nome: <br>
+        <input type="text" name="nome" id=""><br>
+        Specifica l'immagine: <br>
+        <input type="file" name="myimg" accept="image/gif"><br>
+        Specifica il tuo file: <br>
+        <input type="file" name="myfile" accept="text/html"><br><br>
+        <input type="submit" name="submit" value="sottoponi il tuo file">
+    </form>
+</body>
+</html>
