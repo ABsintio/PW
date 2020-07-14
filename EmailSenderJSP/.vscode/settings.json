@@ -1,0 +1,7 @@
+{
+    "java.dependency.syncWithFolderExplorer": true,
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "/home/riccbrand/Scrivania/UNIVERSITA/TerzoAnno/SecondoSemestre/PW/WEB-PAGES/EmailSenderJSP/**/*.jar"
+    ]
+}
