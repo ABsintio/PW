@@ -18,7 +18,7 @@
             FileItem fi = (FileItem) it.next();
             if (fi.isFormField()) {
                 String fieldName = fi.getFieldName();
-                if (fielName.equals("nome")) {
+                if (fieldName.equals("nome")) {
                     %>
                     <h1>Ciao <%=fi.getString() %> </h1>
                     <%
@@ -37,7 +37,7 @@
                 <%
                 File savedFile = new File(
                     getServletContext().getRealPath("/"),
-                    "definitivi\\" + fullFile.getName();
+                    "definitivi\\" + fullFile.getName()
                 );
                 fi.write(savedFile);
             }
