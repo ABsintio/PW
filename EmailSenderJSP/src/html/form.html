@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form per spedire una email</title>
+</head>
+<body>
+    <h1>Una pagina per spedire le email</h1>
+    <form action="../sendemailbyform.jsp" method="POST">
+        <table align="center">
+            <tr>
+                <td>To: </td>
+                <td><input type="email" name="to" size="50"></td>
+            </tr>
+            <tr>
+                <td>Subject: </td>
+                <td><input type="text" name="subject" size=50 value="Mail scritta dal Form"></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <textarea name="text" cols="50" rows="20">
+                        Ciao da JavaMail!
+                    </textarea>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="submit" value="Send E-Mail">
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
