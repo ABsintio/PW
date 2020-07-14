@@ -8,6 +8,8 @@ else
     cp -r $file /opt/tomcat/latest/webapps/
 fi
 
+chown tomcat:tomcat /opt/tomcat/latest/webapps/$file
+
 commit=${@: -1:1}
 echo $commit
 
