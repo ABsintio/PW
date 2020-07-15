@@ -23,7 +23,7 @@ public class ServletPost extends HttpServlet {
         PrintWriter out = response.getWriter();
 
         String uname = request.getParameter("uname");
-        String password = request.getParameter("password");
+        String password = request.getParameter("pswd");
         String carica = request.getParameter("carica");
 
         out.println("<html><head><title>Home Page</title></head><body>");
