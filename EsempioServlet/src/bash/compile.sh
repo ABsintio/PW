@@ -1,18 +1,13 @@
 #!/usr/bin/env bash
 
-jav=`find . -regex '.*\.java'`
+javac -cp ".:./src/lib/*" -d ./WEB-INF/classes ./src/ServletGet.java
+javac -cp ".:./src/lib/*" -d ./WEB-INF/classes ./src/ServletPost.java
 
-if [ ! -z `echo $jav | tail -n 1` ]; then
-    for file in ${jav}; do
-        javac -cp ".:./src/lib/*" -d ./WEB-INF/classes $file
-    done
+class=`find . -regex '.*\.class'`
 
-    class=`find . -regex '.*\.class'`
-
-    for fileclass in ${class}; do
-        jar cfv ./WEB-INF/lib/servlet.jar $fileclass
-    done
-fi
+for fileclass in ${class}; do
+    jar cfv ./WEB-INF/lib/servlet.jar $fileclass
+done
 
 dir=`echo $(pwd) | awk '{split($0, array, "/"); print array[length(array)]}'`
 cd ..

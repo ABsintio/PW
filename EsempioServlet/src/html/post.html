@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="it" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Gestione richieste POST</title>
+    </head>
+    <body>
+        <h1>Inserisci informazioni sensibili</h1>
+        <form action="" method="post">
+            <table>
+                <tr>
+                    <td>Inserisci lo Username: </td>
+                    <td><input type="text" name="uname" placeholder="Scrivi qua" required="true"></td>
+                </tr>
+                <tr>
+                    <td>Inserisci la Password: </td>
+                    <td><input type="password" name="pswd" placeholder="Scrivi qua" required="true"></td>
+                </tr>
+                <tr>
+                    <td>Seleziona la tua carica: </td>
+                    <td><select name="carica">
+                        <option value="admin">Amministratore</option>
+                        <option value="impiegato">Impiegato</option>
+                    </select></td>
+                </tr>
+            </table>
+            <input type="submit" value="Loggati!">
+        </form>
+    </body>
+</html>
