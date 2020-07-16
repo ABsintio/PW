@@ -12,8 +12,16 @@
         <servlet-name>ServletGET</servlet-name>
         <servlet-class>ServletGet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>HiddenFormParameter</servlet-name>
+        <servlet-class>HiddenFormParameter</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletGET</servlet-name>
         <url-pattern>/ServletGET</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HiddenFormParameter</servlet-name>
+        <url-pattern>/HFP</url-pattern>
     </servlet-mapping>
 </web-app>
