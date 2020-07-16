@@ -19,30 +19,28 @@ public class ServletCookie extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response)
     throws IOException, ServletException {
+        Cookie cookies[] = request.getCookies();
+        String iceCream = request.getParameter("select");
+        Cookie cookieIceCream = new Cookie(iceCream, this.url.get(iceCream));
+        response.addCookie(cookieIceCream);
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
         out.println("<html><head><title>Gelati</title></head><body>");
-        String iceCream = request.getParameter("select");
         out.println("<h1>Preferenza selezionata</h1>");
         out.println("<p><strong>" + iceCream + "</strong></p>");
-        out.println("<p>Questo link potrebbe interessarti "
-                    "<a href= " + this.url.get(iceCream) + "></a></p>");
-        Cookie cookieIceCream = new Cookie(iceCream, this.url.get(iceCream));
-        response.addCookie(cookieIceCream);
-        Cookie[] cookies = request.getCookies();
-        if (cookies.length > 0) {
-            out.println("<p>Le tue preferenze recenti sono state: </p><table>");
+        out.println("<p>Questo link potrebbe interessarti " +
+                    "<a href=" + this.url.get(iceCream) + ">" + this.url.get(iceCream) + "</a></p>");
+        out.println("<a href=\"/EsempioServlet/src/html/cookie.html\">Seleziona altre preferenze</a>");
+        if (cookies.length > 0 && cookies != null) {
+            out.println("<h3>Le tue preferenze recenti sono state: </h3><p><table>");
             for (Cookie c: cookies) {
                 out.println("<tr>");
-                out.println("<td>" + c.getName() + "</td>");
-                out.println("<td>" + c.getValue() + "</td>");
+                out.println("<td><strong>" + c.getName() + "</strong></td>");
+                out.println("<td><a href=" + c.getValue() + ">" + c.getValue() + "</td>");
                 out.println("</tr>");
             }
-            out.println("</table>");
-        } else {
-            out.println("<h4 color=\"red\">Nessuna preferenza recente</h4>");
+            out.println("</table></p>");
         }
-        out.println("<a href=\"/EsempioServlet/src/html/cookie.html\">Seleziona altre preferenze</a>");
         out.close();
     }
 }
