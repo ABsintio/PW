@@ -25,7 +25,8 @@ public class ServletCookie extends HttpServlet {
         String iceCream = request.getParameter("select");
         out.println("<h1>Preferenza selezionata</h1>");
         out.println("<p><strong>" + iceCream + "</strong></p>");
-        out.println("<p>Questo link potrebbe interessarti " + this.url.get(iceCream) + "</p>");
+        out.println("<p>Questo link potrebbe interessarti "
+                    "<a href= " + this.url.get(iceCream) + "></a></p>");
         Cookie cookieIceCream = new Cookie(iceCream, this.url.get(iceCream));
         response.addCookie(cookieIceCream);
         Cookie[] cookies = request.getCookies();
