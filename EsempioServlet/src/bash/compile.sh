@@ -3,6 +3,7 @@
 javac -cp ".:./src/lib/*" -d ./WEB-INF/classes ./src/ServletGet.java
 javac -cp ".:./src/lib/*" -d ./WEB-INF/classes ./src/ServletPost.java
 javac -cp ".:./src/lib/*" -d ./WEB-INF/classes ./src/HiddenFormParameter.java
+javac -cp ".:./src/lib/*" -d ./WEB-INF/classes ./src/ServletCookie.java
 
 class=`find . -regex '.*\.class'`
 
