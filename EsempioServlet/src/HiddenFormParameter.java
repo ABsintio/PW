@@ -29,14 +29,14 @@ public class HiddenFormParameter extends HttpServlet {
         this.info.replace("cognome", cognome);
         if (this.info.get("nome") == null) {
             out.println("<h1>Inserisci il nome</h1>");
-            out.println("<form action=\"/EsempioServlet/HFP\" method=\"POST\">");
+            out.println("<form action=\"/EsempioServlet/HFP\" method=\"GET\">");
             out.println("<input type=\"text\" name=\"nome\" placeholder=\"Scrivi qui\">");
             out.println("<input type=\"submit\" value=\"Inserisci il nome\">");
             out.println("</form></body></html>");
             out.close();
         } else if (this.info.get("cognome") == null) {
             out.println("<h1>Inserisci il cognome</h1>");
-            out.println("<form action=\"/EsempioServlet/HFP\" method=\"POST\">");
+            out.println("<form action=\"/EsempioServlet/HFP\" method=\"GET\">");
             out.println("<input type=\"hidden\" value=" + this.info.get("nome") + " name=\"nome\">");
             out.println("<input type=\"text\" name=\"cognome\" placeholder=\"Scrivi qui\">");
             out.println("<input type=\"submit\" value=\"Inserisci il cognome\">");
