@@ -8,25 +8,26 @@
     <body>
         <%! HashMap<String, String> set = new HashMap<String, String>(); %>
         <%
-        String name = request.getParamter("name");
+        String name = request.getParameter("name");
         String surname = request.getParameter("cognome");
         if (name != null && surname != null) {
+            %><p>Valori inseriti: <%=name%> <%= surname%></p><%
             if (!set.isEmpty()) {
                 Iterator<Map.Entry<String, String>> it = set.entrySet().iterator();
                 %>
                 <h3>Valore Recentemente registrati: </h3>
                 <table>
                 <%
+                int i = 1;
                 while (it.hasNext()) {
                     Map.Entry<String, String> e = it.next();
                     String key = e.getKey();
                     String value = e.getValue();
                     %>
                         <tr>
+                            <td><%= i%>)</td>
                             <td><b>Nome: </b></td>
                             <td><%= key %></td>
-                        </tr>
-                        <tr>
                             <td><b>Cognome: </b></td>
                             <td><%= value %></td>
                         </tr>
@@ -44,7 +45,7 @@
             <%
         }
         %>
-        <form action="./src/jsp/register.jsp" method="get">
+        <form action="register.jsp" method="get">
             <p><table>
                 <tr>
                     <td><strong>Nome: </strong></td>
