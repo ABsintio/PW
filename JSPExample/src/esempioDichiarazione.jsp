@@ -6,7 +6,7 @@
     <title>Esempio JSP sulle dichiarazioni</title>
 </head>
 <body>
-    <%! int counter = 0; %> <%-- Oppure <% int counter=0; %> --%>
+    <% int counter = 0; %> <%-- Oppure <% int counter=0; %> --%>
     <% counter++; %>
     <h1>Il contatore vale <%=counter %></h1>
     <% counter++; %>
