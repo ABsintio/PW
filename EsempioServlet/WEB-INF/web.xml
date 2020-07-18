@@ -44,6 +44,7 @@
             <web-resource-name>Una pagina protetta</web-resource-name>
             <url-pattern>/src/jsp/register.jsp</url-pattern>
             <http-method>POST</http-method>
+            <http-method>GET</http-method>
         </web-resource-collection>
         <auth-constraint>
             <role-name>tomcat</role-name>
