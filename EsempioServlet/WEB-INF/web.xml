@@ -8,6 +8,23 @@
         Esempio di due servlet per le gestione di richieste
         POST e di richieste GET.
     </description>
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <form-login-config>
+            <form-login-page>/src/jsp/login.jsp</form-login-page>
+            <form-error-page>/src/jsp/error.jsp</form-error-page>
+        </form-login-config>
+    </login-config>
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Una pagina protetta</web-resource-name>
+            <url-pattern>/src/jsp/register.jsp</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>tomcat</role-name>
+            <role-name>role1</role-name>
+        </auth-constraint>
+    </security-constraint>
     <servlet>
         <servlet-name>ServletGET</servlet-name>
         <servlet-class>ServletGet</servlet-class>
